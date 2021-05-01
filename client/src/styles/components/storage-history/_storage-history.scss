@@ -1,0 +1,26 @@
+.storage-history {
+    align-items: center;
+   display: flex;
+   justify-content: center;
+   margin: 2rem 0;
+
+}
+
+.storage-history__daily {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 60rem;
+}
+
+.storage-history__monthly {
+   @extend .storage-history__daily;
+}
+
+
+
+
+
+

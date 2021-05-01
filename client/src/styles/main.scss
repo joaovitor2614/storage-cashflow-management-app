@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Work+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+// estilos default
+@import './global/global';
+// estilos reutilisaveis
+@import './reusable/button';
+@import './reusable/my-customfield';
+// estilos de components
+@import './components/storage/storage';
+@import './components/loading';
+@import './components/login';
+@import './components/sidebar/sidebar';
+@import './components/cashflow/cashflow';
+@import './components/storage-history/storage-history';

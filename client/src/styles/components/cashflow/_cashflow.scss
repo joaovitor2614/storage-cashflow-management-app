@@ -1,0 +1,78 @@
+.cashflow-bg {
+    align-items: center;
+    background: #161b22;
+    display: flex;
+
+    height: 100vh;
+    width: 100vw;
+    
+}
+
+.cashflow-page {
+    
+    display: flex;
+    flex-direction: row;
+    
+  
+    margin: 0 auto;
+    max-width: 68rem;
+    height: 42rem;
+   padding: 15px;
+   width: 57rem;
+    
+}
+
+.cashflow-page__group {
+ 
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid black;
+    
+   
+}
+
+.cashflow-page__group--query {
+ 
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid black;
+    width: 22rem;
+    
+   
+}
+
+
+.cashflow-page__group-cart {
+    height: 40rem;
+   display: flex;
+   flex-direction: column;
+    padding: 11px;
+    width: 31rem;
+    margin-left: 1rem;
+  
+}
+
+.cashflow-page__group-cart > * {
+    align-items: flex-end;
+}
+
+
+
+
+.cashflow-page__group-cart-form {
+    display: flex;
+   flex-direction: row;
+}
+
+
+.cashflow-display {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.cashflow-display__group {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}

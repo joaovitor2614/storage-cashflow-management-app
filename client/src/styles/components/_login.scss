@@ -1,0 +1,33 @@
+.login-page {
+    align-items: center;
+    background-image: url('../assets/loginimg.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+.login-page__box {
+    background: fade-out(#fff, .15);
+    background-position: center;
+    border-radius: 15px;
+
+    padding: 1.8rem 1rem;
+    text-align: center;
+   
+}
+
+.login-page__box-form {
+    width: 25rem;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-page__box-form > * {
+    margin: 1rem 0;
+}

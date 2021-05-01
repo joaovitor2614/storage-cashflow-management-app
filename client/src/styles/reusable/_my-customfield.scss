@@ -1,0 +1,26 @@
+.my-selectfield {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.my-selectfield > * {
+    margin: 0.6rem 0;
+}
+
+
+
+.my-textfield {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.my-textfield > * {
+    margin: 0.6rem 0;
+}
+

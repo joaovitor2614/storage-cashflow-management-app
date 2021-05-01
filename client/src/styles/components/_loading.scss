@@ -1,0 +1,24 @@
+.loader {
+    background-color: white;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.loader__img {
+    height: 17rem;
+    width: 17;
+    @media (min-width: 45rem) {
+        height: 24rem;
+        width: 24rem;
+      }
+}
+
+.loader__group {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

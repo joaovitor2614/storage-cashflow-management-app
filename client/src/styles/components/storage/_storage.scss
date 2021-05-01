@@ -1,0 +1,37 @@
+
+.storage-page__actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.storage-page__actions-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    margin-top: 3rem;
+}
+
+.storage-page__actions-main > * {
+    margin: 0 2rem;
+}
+
+.storage-page__actions-secondary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+}
+
+.storage-page__actions-secondary > * {
+    margin: 0 1rem;
+}
+
+.error.text {
+    font-family: italic;
+    color: red;
+}
