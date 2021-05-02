@@ -15,16 +15,21 @@ import useDataTableDaily from '../hooks/useDataTableDaily';
 const columns = [
     { id: 'name', label: 'Produto', align: 'left', minWidth: 100 },
     { id: 'units', label: 'Unidades', minWidth: 70, align: 'center' },
+    { id: 'kgs', label: 'Quilo', minWidth: 70, align: 'center' },
     { id: 'date', label: 'Hora', align: 'center', minWidth: 70 },
 ]
 
 const useStyles = makeStyles({
     root: {
+        borderRadius: '30px',
         width: '550px',
-        height: '657px',
+      
         wordBreak: 'break-all'
       
     },
+    table: {
+        borderRadius: '30px',
+    }
   
     
 })
@@ -46,7 +51,7 @@ const StorageHistoryTable = ({ itemSales, type }) => {
 
     return ( 
             <Paper className={classes.root}>
-                            <TableContainer>
+                            <TableContainer className={classes.table}>
                             <Table stickyHeader aria-label='sticky table'>
                                 <TableHead>
                                     <TableRow>

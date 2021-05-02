@@ -9,7 +9,7 @@
 .storage-history__daily {
     align-items: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 
     width: 60rem;
@@ -19,6 +19,24 @@
    @extend .storage-history__daily;
 }
 
+.storage-history__balance {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 4px;
+    margin: 1.3rem 0;
+}
+
+
+.storage-history__balance > * {
+    margin: 0 7px;
+}
+
+
+.storage-history__table {
+    text-align: center;
+}
 
 
 

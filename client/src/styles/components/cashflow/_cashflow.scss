@@ -1,6 +1,6 @@
 .cashflow-bg {
     align-items: center;
-    background: #161b22;
+     margin-left: 3rem;
     display: flex;
 
     height: 100vh;
@@ -15,10 +15,11 @@
     
   
     margin: 0 auto;
-    max-width: 68rem;
-    height: 42rem;
+   
+ 
+    height: 37rem;
    padding: 15px;
-   width: 57rem;
+   width: 59rem;
     
 }
 
@@ -27,34 +28,35 @@
     display: flex;
     flex-direction: column;
     border-right: 1px solid black;
+    padding-right: 15px;
+    height: 36rem;
+    width: 58.5rem;
     
    
 }
 
-.cashflow-page__group--query {
- 
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid black;
-    width: 22rem;
-    
-   
-}
 
 
 .cashflow-page__group-cart {
-    height: 40rem;
+    height: 36rem;
    display: flex;
    flex-direction: column;
     padding: 11px;
     width: 31rem;
     margin-left: 1rem;
+ 
+    white-space: pre-wrap;
+    word-break: break-word;
   
 }
 
-.cashflow-page__group-cart > * {
-    align-items: flex-end;
+.cashflow-page__group-cart > span {
+    
+    margin: 0 0.2rem;
+    margin-top: auto;
+
 }
+
 
 
 
@@ -71,8 +73,87 @@
 
 }
 
-.cashflow-display__group {
-    align-items: center;
+
+
+.cashflow-page__group-cart-form__box {
+    padding: 10px;
+    width: 31rem;
+}
+
+.cashflow-page__group-cart-form__box-content {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.cashflow-page__group-cart__list {
+    height: 33rem;
+    color: #adbac7;
+    padding: 7px;
+    
+ 
+}
+
+.cashflow-page__group-cart__list-item {
+    border-radius: 25px;
+    background: #22272e;
+    border: 1px solid;
+    padding: 0.1rem;
+     
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.cashflow-page__group-cart__list-item__header {
+    border-radius: 25px;
+    background: #2d333b;
+    color: #adbac7;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem;
+}
+
+.cashflow-page__group-list {
+    height: 35rem;
+    padding: 7px;
+}
+
+
+.cashflow__query-input {
+    color: black;
+    border-radius: 20px;
+    height: 0.7rem;
+    width: 2rem;
+    outline: none;;
+   
+
+}
+
+.cashflow-page__group-list-item {
+    border: 1px solid rgb(185, 176, 176);
+    border-radius: 25px;
+}
+
+.cashflow-display__group__main {
+    display: flex;
+    flex-direction: column;
+}
+
+.cashflow-display__group__main > * {
+    margin-right: auto;
+}
+
+.cashflow-display__group__main-1 > small {
+    font-weight: bold;
+}
+
+.cashflow-display__group__main-2 {
+    display: flex;
+    flex-direction: row;
+    padding: 3px;
+}
+
+.cashflow-display__group__main-2 > * {
+    margin: 0 5px;
 }

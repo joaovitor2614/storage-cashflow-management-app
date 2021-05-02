@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import numeral from 'numeral'
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
@@ -8,7 +10,21 @@ import { numeralConfig } from './numeral';
 numeralConfig();
 numeral.locale('br')
 
+
+
+
+export const useStyles = makeStyles(() => ({
+    input: {
+      width: '5.5rem',
+      WebkitTextSizeAdjust: '0.5rem',
+      textSizeAdjust: '0.5rem'
+    }
+  
+})
+)
+
 const CashFlowForm = ({ handleAddSale, balance, items }) => {
+    const classes = useStyles();
     const [value, setValue] = useState('');
     const handleChange = (e) => {
         const amount = e.target.value
@@ -34,23 +50,29 @@ const CashFlowForm = ({ handleAddSale, balance, items }) => {
        
     }
     return (
-        <form onSubmit={(e) => handleSubmit(e, items, balance)}>
-            <TextField 
-                id="sale-add" label="Valor de pagamento" 
-                placeholder="Insira valor de pagamento..."  variant="outlined"
-                value={value} onChange={(e) => handleChange(e)} 
-            />
-            
-            <h4>
-            Troco: {value !== '' ? numeral(value - balance).format('$0,0.00') 
-            : numeral(0).format('$0,0.00')}
-            </h4>
-            <h4><AttachMoneyIcon /> Balanço total: {numeral(balance).format('$0,0.00')}</h4>
-            <Button variant="contained" color="primary" type="submit"
-            disabled={value === '' || !items.length > 1 ? true : false} >
-                Finalizar compra
-            </Button>
-        </form>
+        <Paper className='cashflow-page__group-cart-form__box' elevation={3}>
+            <form className='cashflow-page__group-cart-form__box-content' 
+            onSubmit={(e) => handleSubmit(e, items, balance)}>
+                <TextField 
+                    id="sale-add" label="Pagamento"  className={classes.input}
+                    placeholder="Insira valor de pagamento..."  variant="outlined"
+                    value={value} onChange={(e) => handleChange(e)} 
+                />
+                
+                <h5>
+                Troco: {value !== '' ? numeral(value - balance).format('$0,0.00') 
+                : numeral(0).format('$0,0.00')}
+                </h5>
+                
+                <h5> Balanço total: {numeral(balance).format('$0,0.00')}</h5>
+
+                <Button size="small" variant="contained" color="primary" type="submit"
+                disabled={value === '' || !items.length > 1 ? true : false} >
+                    Finalizar compra
+                </Button>
+            </form>
+        </Paper>
+       
     )
 }
 

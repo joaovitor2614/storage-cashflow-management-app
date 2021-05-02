@@ -13,10 +13,14 @@ import LoadingPage from '../LoadingPage';
 const useStyles = makeStyles((theme) => ({
    panel: {
 
-    width: '65rem'
+    width: '65rem',
+    height: '985px'
    },
-   bg: {
-    backgroundColor: 'orange'
+   tab: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    backgroundColor: '#2d333b',
+    color: '#adbabe'
    }
 }))
 
@@ -38,7 +42,8 @@ const StorageHistory = () => {
             {loading === true ? <LoadingPage /> : (
                 <div>
                     <AppBar  className={classes.panel} position="static">
-                        <Tabs className={classes.bg} value={value} onChange={handleChange} aria-label="sales history">
+                        <Tabs centered className={classes.tab} value={value} 
+                        onChange={handleChange} aria-label="sales history">
                             <Tab label="Movimentação diária" {...a11yProps(0)} />
                             <Tab label="Movimentação mensal" {...a11yProps(1)} />
                         </Tabs>

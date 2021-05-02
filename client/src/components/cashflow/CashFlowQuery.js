@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles'
 export const useStyles = makeStyles(() => ({
    
     input: {
-        width: '14rem',
+        width: '22rem',
       
     }
 })

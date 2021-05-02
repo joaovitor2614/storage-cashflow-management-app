@@ -8,9 +8,9 @@ dayjs.locale('pt-br') // usar locale portugues globalmente
 dayjs.extend(LocalizedFormat)
 
 
-const createData = (name, units, date, _id) => {
+const createData = (name, units, kgs, date, _id) => {
    
-    return { name, units, date, _id }
+    return { name, units, kgs, date, _id }
 }
 
 
@@ -29,10 +29,12 @@ const useDataTableDaily = (items, type) => {
                 sale.products.forEach((item) => {
                     console.log('type', type)
                     if (type === 'daily') {
-                        let data = createData(item.name, item.units, dayjs(date).format('LT'), item._id);
+                        let data = createData(item.name, item.units, item.kgs, 
+                            dayjs(date).format('LT'), item._id);
                         products.unshift(data)
                     } else if (type === 'monthly') {
-                       let data = createData(item.name, item.units, dayjs(date).format('L'), item._id);
+                       let data = createData(item.name, item.units, item.kgs, 
+                        dayjs(date).format('L'), item._id);
                        products.unshift(data)
                     }
                 

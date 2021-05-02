@@ -58,20 +58,23 @@ const CashFlow = () => {
             <Paper elavation={2} className="cashflow-page">
         
                 
-                <div className="cashflow-page__group cashflow-page__group--query">
+                <div className="cashflow-page__group">
                 
                     
                     <CashFlowQuery handleQuery={handleQuery} />
-                    {itemsFlow.length > 0 ? itemsFlow.map((item) => (
-                        <CashFlowDisplay item={item} key={item._id} handleAdd={handleAdd} />
-                    )) : <h3>Items não foram encontrados para esse nome</h3>}
+                    <div className="cashflow-page__group-list">
+                        {itemsFlow.length > 0 ? itemsFlow.map((item) => (
+                            <CashFlowDisplay item={item} key={item._id} handleAdd={handleAdd} />
+                        )) : <h4>Items não foram encontrados para esse nome</h4>}
+                    </div>
+                    
                 
                 </div>
                 <div className="cashflow-page__group-cart">
                     <CashFlowCart items={itemsCart} handleRemove={handleRemove} />
-                    <div className="cashflow-page__group-cart-form">
+                    <span className="cashflow-page__group-cart-form">
                         <CashFlowForm items={itemsCart} balance={balance} handleAddSale={handleAddSale}/>
-                    </div>
+                    </span>
                     
                 </div>
                 
