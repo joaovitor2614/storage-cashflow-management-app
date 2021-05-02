@@ -2,7 +2,7 @@
 
 const initialState = {
     byName: '',
-    byCategory: '',
+    byCategory: 'All',
     byVu: 0,
     byQe: '0'
 }
@@ -33,7 +33,7 @@ const storageFilterReducer = (state = initialState, action) => {
         case 'CLEAR_FILTER': 
         return {
             ...state,
-            byCategory: '',
+            byCategory: 'All',
             byVu: 0,
             byQe: '0',
         }

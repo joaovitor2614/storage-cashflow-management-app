@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 0;
 }
 
 .storage-page__actions-main {
@@ -11,12 +12,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 7px;
-    margin-top: 3rem;
+    padding: 27px;
+    margin: 0;
+    margin-top: 2.5rem;
+
 }
 
+
+
 .storage-page__actions-main > * {
-    margin: 0 2rem;
+    margin: 0 14px;
 }
 
 .storage-page__actions-secondary {

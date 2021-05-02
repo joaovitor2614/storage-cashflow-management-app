@@ -24,6 +24,7 @@ router.post('/', auth, check('name', 'Nome do item é necessário').notEmpty(),
                                     
                 try {
                     const newItem = new Item({
+                        originalWeight: req.body.weight,
                         ...req.body
                     })
                     
@@ -119,7 +120,7 @@ router.post('/sales', auth, async (req, res) => {
                     console.log('product ', product)
                     console.log('here weight')
                     let weightNumber = parseFloat(soldItem.weight, 10);
-                    let previoiusWeight = soldItem.weight;
+                    let previousWeight = soldItem.originalWeight;
                     soldItem.weight = weightNumber -= product.kgs
                     console.log('weight after', soldItem.weight)
                     if (soldItem.weight <= 0) {
@@ -127,7 +128,7 @@ router.post('/sales', auth, async (req, res) => {
                                 soldItem.remove()
                             }
                             soldItem.storageAmount--
-                            soldItem.weight = previoiusWeight;
+                            soldItem.weight = previousWeight;
                             soldItem.save();
                     } else {
                             soldItem.save();

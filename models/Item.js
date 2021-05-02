@@ -23,6 +23,7 @@ const ItemSchema = new mongoose.Schema({
             category: '',
             validity: '',
             weight: String,
+            originalWeight: String,
   
 })
 

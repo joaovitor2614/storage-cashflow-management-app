@@ -28,7 +28,7 @@ export const getExchange = (payment, balance) => {
 export const getKgPrice = (item) => {
     let kgPrice = 0;
     const priceToNumber = parseFloat(item.pricePerUnit, 10);
-    const weightToNumber = parseFloat(item.weight, 10);
+    const weightToNumber = parseFloat(item.originalWeight, 10);
     const profitToNumber = parseFloat(item.profitKg, 10);
     if (item.profitKg) {
        console.log('profitToNum', profitToNumber, 'priceTo', priceToNumber, 'weight', weightToNumber);
