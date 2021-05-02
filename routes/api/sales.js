@@ -46,8 +46,13 @@ router.get('/', auth, async (req, res) => {
         let dailySales = [];
         let monthlySales = [];
         sales.forEach((sale) => {
-            const soldDate = dayjs(sale.date)
-            if (soldDate.diff(dayjs(), 'day') === 0 && soldDate.diff(dayjs(), 'month' === 0)) {
+            const soldDate = dayjs(sale.date);
+            const dayDate = dayjs(sale.date).get('day')
+            
+            if (dayDate == new Date().getDay() && soldDate.diff(dayjs(), 'month' === 0)) {
+               
+                
+
                 dailySales.push(sale)
                 monthlySales.push(sale);
             } else if (soldDate.diff(dayjs(), 'month' === 0)) {

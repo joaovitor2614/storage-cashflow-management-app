@@ -22,7 +22,7 @@ const columns = [
 const useStyles = makeStyles({
     root: {
         borderRadius: '30px',
-        width: '550px',
+        width: '570px',
       
         wordBreak: 'break-all'
       

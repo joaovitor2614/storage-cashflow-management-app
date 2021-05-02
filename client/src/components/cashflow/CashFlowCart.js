@@ -17,10 +17,13 @@ const CashFlowCart = ({ items, handleRemove }) => {
                                 <RemoveShoppingCartIcon fontSize="inherit" />
                         </IconButton>
                     </div>
+                    <div className="cashflow-page__group-cart__list-item__amount">
+    
+                        {item.units && <small>Unidades: {item.units}</small>}
+                        {item.kgs && <small>Kg: {item.kgs}</small>}
+                    </div>
                      
-                     
-                     {item.units && <small>Unidades: {item.units}</small>}
-                     {item.kgs && <small>Kg: {item.kgs}</small>}
+                   
                      
                 </div>
             )) : <h4>Sem items adicionados ao carrinho</h4>}

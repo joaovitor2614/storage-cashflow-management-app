@@ -88,17 +88,18 @@
 }
 
 .cashflow-page__group-cart__list {
+ 
     height: 33rem;
     color: #adbac7;
-    padding: 7px;
+    padding: 16px;
+    border-bottom: 1px solid rgb(206, 199, 199);
     
  
 }
 
 .cashflow-page__group-cart__list-item {
-    border-radius: 25px;
-    background: #22272e;
-    border: 1px solid;
+ 
+    border-bottom: 1px solid rgb(148, 146, 146);
     padding: 0.1rem;
      
     white-space: pre-wrap;
@@ -106,17 +107,32 @@
 }
 
 .cashflow-page__group-cart__list-item__header {
-    border-radius: 25px;
-    background: #2d333b;
+
+  
     color: #adbac7;
     display: flex;
     justify-content: space-between;
     padding: 0.2rem;
 }
 
+.cashflow-page__group-cart__list-item__amount {
+    padding: 0 9px;
+    font-weight: 300;
+    
+}
+
+.cashflow-page__group-cart__list-item__header > h5 {
+    color: black;
+    font-weight: 500;
+}
+
+.cashflow-page__group-query {
+    margin-bottom: 0.5rem;
+}
+
 .cashflow-page__group-list {
     height: 35rem;
-    padding: 7px;
+    padding: 4px;
 }
 
 
@@ -130,30 +146,54 @@
 
 }
 
-.cashflow-page__group-list-item {
-    border: 1px solid rgb(185, 176, 176);
-    border-radius: 25px;
+.cashflow-page__group-list__toggle {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
 }
 
-.cashflow-display__group__main {
+.cashflow-page__group-list__toggle > * {
+    padding: 0;
+    margin: 0;
+}
+
+.input-amount {
+    outline: none;
+    height: 15px;
+    width: 10px;
+    text-align: center;
+    color: black;
+}
+
+.cashflow-page__group-list__item {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(209, 204, 204);
+}
+
+
+.cashflow-page__group-list__item-info {
     display: flex;
     flex-direction: column;
 }
 
-.cashflow-display__group__main > * {
-    margin-right: auto;
-}
-
-.cashflow-display__group__main-1 > small {
-    font-weight: bold;
-}
-
-.cashflow-display__group__main-2 {
+.cashflow-page__group-list__item-actions {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    margin-left: auto;
     padding: 3px;
 }
 
-.cashflow-display__group__main-2 > * {
-    margin: 0 5px;
+.cashflow-page__group-list__item-amount {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  
+}
+
+
+.cashflow-page__group-list__item-actions > * {
+    margin: 0.2rem 0;
 }

@@ -17,7 +17,9 @@ export const useStyles = makeStyles(() => ({
     input: {
       width: '5.5rem',
       WebkitTextSizeAdjust: '0.5rem',
-      textSizeAdjust: '0.5rem'
+      textSizeAdjust: '0.5rem',
+      fontSize: '12px',
+      
     }
   
 })
@@ -54,8 +56,8 @@ const CashFlowForm = ({ handleAddSale, balance, items }) => {
             <form className='cashflow-page__group-cart-form__box-content' 
             onSubmit={(e) => handleSubmit(e, items, balance)}>
                 <TextField 
-                    id="sale-add" label="Pagamento"  className={classes.input}
-                    placeholder="Insira valor de pagamento..."  variant="outlined"
+                    id="sale-add" placeholder="R$0.00"  className={classes.input}
+                      variant="outlined"
                     value={value} onChange={(e) => handleChange(e)} 
                 />
                 

@@ -60,8 +60,9 @@ const CashFlow = () => {
                 
                 <div className="cashflow-page__group">
                 
-                    
-                    <CashFlowQuery handleQuery={handleQuery} />
+                    <div className="cashflow-page__group-query">
+                        <CashFlowQuery handleQuery={handleQuery} />
+                    </div>          
                     <div className="cashflow-page__group-list">
                         {itemsFlow.length > 0 ? itemsFlow.map((item) => (
                             <CashFlowDisplay item={item} key={item._id} handleAdd={handleAdd} />

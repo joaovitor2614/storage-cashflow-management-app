@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export const useStorageTable = makeStyles(() => ({
-   
+    
     storageTable: {
         width: '1400px',
         maxWidth: '1500px',
@@ -11,6 +11,9 @@ export const useStorageTable = makeStyles(() => ({
         justifyContent: 'center',
         marginTop: '100px',
         marginLeft: '25px'
+    },
+    paper: {
+        width: '1200px'
     }
 })
 )

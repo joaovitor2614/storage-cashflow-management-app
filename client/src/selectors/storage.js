@@ -7,24 +7,27 @@ const filterByQe = (item, byQe) => {
       break;
     case '1 a 5':
       if (item.storageAmount >= 1 && item.storageAmount <= 5) {
-        return item;
-        break;
+        console.log('item sotrage amount', item.storageAmount)
+        return item
       }
+      break
     case '6 a 15':
       if (item.storageAmount >= 6 && item.storageAmount <= 15) {
-        return item;
-        break;
+        return item
       }
+      break
     case '16 a 50':
         if (item.storageAmount >= 16 && item.storageAmount <= 50) {
-          return item;
-          break;
+          return item
+      
         }
+        break
         case '51+':
           if (item.storageAmount >= 51) {
             return item;
-            break;
+           
           }
+          break
       default:
         return;
   }

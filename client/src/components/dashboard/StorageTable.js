@@ -82,8 +82,8 @@ const StorageTable = ({ items, filters }) => {
   
   return (
       <div className={classes.storageTable}>
-         <Paper >
-                <TableContainer className={classes.paper}>
+         <Paper className={classes.paper}>
+                <TableContainer >
                     <Table stickyHeader aria-label='sticky table'>
                         <TableHead className={classes.header}>
                             <TableRow>

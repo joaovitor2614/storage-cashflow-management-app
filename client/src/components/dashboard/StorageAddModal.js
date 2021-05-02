@@ -40,7 +40,7 @@ const StorageAddModal = ({ open, handleClose, handleSubmit, data = '', handleRem
                             </IconButton>
                             
                         </div>
-                        <small>* = Campos obrigatórios</small>
+                        <small>* = Campos obrigatórios / Caso ração, especifique peso e porcentagem de lucro por kg</small>
                         <div>
                             <StorageAddForm data={data} handleSubmit={handleSubmit} handleClose={handleClose} />
                             

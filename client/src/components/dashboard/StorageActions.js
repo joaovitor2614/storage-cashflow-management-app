@@ -76,10 +76,10 @@ const StorageActions = ({ filters }) => {
                         startAdornment: <InputAdornment position="start"><SearchIcon></SearchIcon></InputAdornment>
                     }}
                 />
-                <IconButton onClick={() => handleShowFilter()}>
+                <IconButton style={{ marginRight: '32px'}} onClick={() => handleShowFilter()}>
                     <FilterListRoundedIcon />
                 </IconButton>
-                 <Tooltip title='add' onClick={() => handleOpen()} aria-label='add'>
+                 <Tooltip  title='add' onClick={() => handleOpen()} aria-label='add'>
                     <Fab color="primary">
                         <AddIcon />
                     </Fab>

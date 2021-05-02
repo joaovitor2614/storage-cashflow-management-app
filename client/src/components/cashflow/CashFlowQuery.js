@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles'
 export const useStyles = makeStyles(() => ({
    
     input: {
-        width: '22rem',
+        width: '23.5rem',
       
     }
 })
@@ -17,7 +17,7 @@ const CashFlowQuery = ({ handleQuery }) => {
     const classes = useStyles();
   
     return (
-        <div>
+        <div >
             <TextField id="standard-basic" className={classes.input} onChange={(e) => handleQuery(e)}placeholder="Procurar produto..." 
              InputProps={{
             endAdornment: <InputAdornment position="start"><SearchIcon></SearchIcon></InputAdornment>,

@@ -14,8 +14,8 @@ import { makeStyles } from '@material-ui/core/styles'
 export const useStyles = makeStyles(() => ({
    
     input: {
-        width: '2.5rem',
-        height: '0.1rem'
+        width: '42px',
+  
       
     }
 })
@@ -27,10 +27,25 @@ const CashFlowDisplay = ({ item, handleAdd }) => {
     const classes = useStyles();
     let [isKg, setIsKg] = useState(false);
     const toggleKg = () => setIsKg(!isKg);
-    let [units, setUnits] = useState(item.profitKg !== '' ? 0 : 1);
-    const [kgs, setKgs] = useState(item.profitKg !== '' ? 1 : 0);
-    const handleUnits = e => setUnits(e.target.value);
-    const handleKgs = e => setKgs(e.target.value);
+    let [units, setUnits] = useState(0);
+    let [kgs, setKgs] = useState(0);
+    const handleUnits = e => {
+    const value = parseFloat(e.target.value, 10);
+        
+    if (value && value !== NaN) {
+        setUnits(value) 
+    }
+    }
+    const handleKgs = e => {
+        const value = parseFloat(e.target.value, 10);
+        
+        if (value && value !== NaN) {
+        setKgs(value)
+        }
+    }
+    const isDisabled = kgs !== 0 || units !== 0 ? false : true;
+    const isDisabled2 = kgs === 0 || units === 0 ? false : true;
+    console.log('is Disabled', isDisabled)
     const onSubmit = (e, item, units, kgs, isKg, perKg, perUnit) => {
         e.preventDefault()
          handleAdd(item, units, kgs, isKg, perKg, perUnit);
@@ -41,14 +56,13 @@ const CashFlowDisplay = ({ item, handleAdd }) => {
   
         
 
-                <div  className="cashflow-page__group-cart-form cashflow-page__group-list-item" 
-                 key={item._id}>
-                     <div className='cashflow-display__group__main'>
-                                <div className='cashflow-display__group__main-1'>
+                <div className="cashflow-page__group-list__item" key={item._id}>
+                     <div className="cashflow-page__group-list__item-info">
+                                <div className="cashflow-page__group-list__item-info__name">
                                     <small>{item.name}</small>
                                 </div>
-                                <div>
-                                <div className='cashflow-display__group__main-2'>
+                           
+                                <div className="cashflow-page__group-list__toggle">
                                         <small>{numeral(getKgPrice(item)).format('$0,0.00')}</small>
                                         <small style={{ opacity: isKg ? 1 : 0.6}}>Kg</small>
                                         <FormControlLabel
@@ -56,30 +70,31 @@ const CashFlowDisplay = ({ item, handleAdd }) => {
                                         name="toggle kg" />}
                                         />
                                         <small style={{ opacity: isKg ? 0.6 : 1}}>Unid.</small>
+                                        <small>{numeral(getUnitPrice(item)).format('$0,0.00')}</small>
+                                        <IconButton disabled={isDisabled || isDisabled2} 
+                                        onClick={(e) => onSubmit(e, item, units, kgs, isKg, 
+                                            getKgPrice(item), getUnitPrice(item))} 
+                                            aria-label="add"  size="small">
+                                                    <AddShoppingCartIcon fontSize="inherit" />
+                                        </IconButton>
                                         
-                                    </div>
-                                    <small>{numeral(getUnitPrice(item)).format('$0,0.00')}</small>
-                                </div>  
-                                    
-                               
-                               
-                    
-                               
-                       
+                                </div>
+                        
                     </div>
-                    <div className='cashflow-display__group'>
+                    <div className="cashflow-page__group-list__item-actions">
                         <div >
-                            <small>Unidade em estoque: {item.storageAmount}</small>
+                            <small>Estoque: {item.storageAmount}</small>
                             
                         </div>
                         <div >
                             {isKg ? (
-                                <div>
+                                <div className="cashflow-page__group-list__item-amount">
                                     <IconButton onClick={() => setKgs(++kgs)} size="small">
                                         <PlusOneIcon />
                                     </IconButton>
-                                    <TextField variant="outlined" className={classes.input}
-                                    type='number'  placeholder="Kg" 
+                                    <TextField className={classes.input} size="small"  
+                                    variant="outlined" 
+                                     placeholder="Kg"
                                     value={kgs} onChange={handleKgs} />
                                     <IconButton onClick={() => setKgs(--kgs)} size="small">
                                         <ExposureNeg1Icon />
@@ -87,12 +102,13 @@ const CashFlowDisplay = ({ item, handleAdd }) => {
                                 </div>
                             
                             ) : (
-                                <div>
+                                <div className="cashflow-page__group-list__item-amount">
                                     <IconButton onClick={() => setUnits(++units)} size="small">
                                         <PlusOneIcon />
                                     </IconButton>
-                                    <TextField className={classes.input} variant="outlined"
-                                    type='number' placeholder="Unidades" 
+                                    <TextField className={classes.input} size="small"  
+                                    variant="outlined"
+                                     placeholder="Unidades" 
                                     value={units} onChange={handleUnits} />
                                     <IconButton onClick={() => setUnits(--units)} size="small">
                                         <ExposureNeg1Icon />
@@ -101,11 +117,7 @@ const CashFlowDisplay = ({ item, handleAdd }) => {
                             
                             )}
                             
-                            <IconButton onClick={(e) => onSubmit(e, item, units, kgs, isKg, 
-                            getKgPrice(item), getUnitPrice(item))} 
-                            aria-label="add"  size="small">
-                                    <AddShoppingCartIcon fontSize="inherit" />
-                            </IconButton>
+                           
                         </div>
 
                     </div>

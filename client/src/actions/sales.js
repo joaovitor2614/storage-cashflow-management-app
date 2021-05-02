@@ -10,7 +10,9 @@ export const addSale = (data) => async dispatch => {
     try {
         const res = await api.post('/sales', data);
         
-    
+        dispatch({
+            type: 'ADD_SALE'
+        })
         // atualizar estoque após registro de comprar
         dispatch(updateStorage(data.products))
         toast.success('✔️  Compra registrada com sucesso, estoque atualizado', {

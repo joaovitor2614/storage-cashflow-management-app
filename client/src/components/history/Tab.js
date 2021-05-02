@@ -6,7 +6,8 @@ const useStyles = makeStyles((theme) => ({
         
         padding: '15px',
         width: '35rem',
-        height: '48rem'
+        height: '48rem',
+ 
     }
 }))
 
