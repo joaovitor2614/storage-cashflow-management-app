@@ -52,6 +52,7 @@
     "formik": "^2.2.6",
     "numeral": "^2.0.6",
     "react-moment": "^1.1.1",
+    "react-paginate": "^7.1.2",
     "react-pro-sidebar": "^0.6.0",
     "react-sidebar-ui": "^1.2.1",
     "react-toastify": "^7.0.4",

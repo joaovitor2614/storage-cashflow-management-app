@@ -4,11 +4,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { updateItemComercial, findNameItem, removeItemComercial } from '../../actions/storage';
 
 import CashFlowCart from './CashFlowCart';
-import CashFlowDisplay from './CashFlowDisplay';
+
 import CashFlowQuery from './CashFlowQuery'
 import { addSale } from '../../actions/sales';
 import CashFlowForm from './CashFlowForm';
 import { getTotalBalance } from './cash';
+import CashFlowPagination from './CashFlowPagination';
+import CashFlowCartPagination from './CashFlowCartPagination';
 
 
 
@@ -53,6 +55,7 @@ const CashFlow = () => {
         dispatch(addSale({ products, balance }))
     }
     const balance = getTotalBalance(itemsCart)
+   
     return (
         <div className="cashflow-bg">
             <Paper elavation={2} className="cashflow-page">
@@ -64,15 +67,15 @@ const CashFlow = () => {
                         <CashFlowQuery handleQuery={handleQuery} />
                     </div>          
                     <div className="cashflow-page__group-list">
-                        {itemsFlow.length > 0 ? itemsFlow.map((item) => (
-                            <CashFlowDisplay item={item} key={item._id} handleAdd={handleAdd} />
-                        )) : <h4>Items não foram encontrados para esse nome</h4>}
+                        
+                        {itemsFlow.length > 0 ? <CashFlowPagination items={itemsFlow} handleAdd={handleAdd} />
+                        : <h4>Items não foram encontrados para esse nome</h4>}
                     </div>
                     
                 
                 </div>
                 <div className="cashflow-page__group-cart">
-                    <CashFlowCart items={itemsCart} handleRemove={handleRemove} />
+                    <CashFlowCartPagination items={itemsCart} handleRemove={handleRemove} />
                     <span className="cashflow-page__group-cart-form">
                         <CashFlowForm items={itemsCart} balance={balance} handleAddSale={handleAddSale}/>
                     </span>

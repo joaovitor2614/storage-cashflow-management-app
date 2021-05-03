@@ -49,3 +49,14 @@ export const getUnitPrice = (item) => {
     }
     return profitUnit;
 }
+
+
+// calcular quantidades de paginas
+export const getPagesAmount = (items) => {
+    if (items.length > 4) {
+        return items.length / items.length - 2;
+    } else {
+        return 0;
+    }
+}
+
