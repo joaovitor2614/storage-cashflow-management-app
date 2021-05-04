@@ -25,7 +25,7 @@ const CashFlowPagination = ({ items, handleAdd }) => {
         setPageNumber(selected)
     }
     return (
-        <div>
+        <div className="cashflow-page__group-cart-content">
             {displayPages}
             <ReactPaginate 
               previousLabel={"Anterior"}

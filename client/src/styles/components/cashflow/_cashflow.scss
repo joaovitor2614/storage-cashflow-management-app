@@ -50,13 +50,6 @@
   
 }
 
-.cashflow-page__group-cart > span {
-    
-    margin: 0 0.2rem;
-    margin-top: auto;
-
-}
-
 
 
 
@@ -91,9 +84,9 @@
 
 .cashflow-page__group-cart__list {
  
-    height: 33rem;
+    height: 30rem;
     color: #adbac7;
-    padding: 16px;
+    padding: 6px;
     border-bottom: 1px solid rgb(206, 199, 199);
     
  
@@ -135,6 +128,14 @@
 .cashflow-page__group-list {
     height: 35rem;
     padding: 4px;
+}
+
+.cashflow-page__group-cart-content {
+    height: 34.5rem;
+}
+
+.cashflow-page__group-cart-content a {
+    margin-bottom: auto;
 }
 
 
