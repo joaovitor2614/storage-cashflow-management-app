@@ -52,7 +52,7 @@ npm run dev
 ```
 
 ## Credits
-Creditis to MoonsBlackSmith for helping with design and software architecture.
+Creditis to [MoonsBlacksmith](https://github.com/MoonsBlacksmith) for helping with design and software architecture.
 
 
 ## License
