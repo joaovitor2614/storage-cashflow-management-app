@@ -20,12 +20,6 @@ export const loadUser = () => async dispatch => {
 }
 
 export const register = ({ name, email, password }) => async dispatch => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }
-    const body = JSON.stringify({name, email, password});
 
     try {
        const res = await api.post('/users', body, config);
@@ -54,7 +48,7 @@ export const login = (data) => async dispatch => {
            type: 'LOGIN_SUCESS',
            payload: res.data
        })
-       console.log(res.data)
+     
        toast.success('✔️  Login efetuado com sucesso', {
         position: "top-center",
         autoClose: 1500,

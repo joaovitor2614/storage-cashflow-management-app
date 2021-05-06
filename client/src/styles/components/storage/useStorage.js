@@ -14,6 +14,10 @@ export const useStorageTable = makeStyles(() => ({
     },
     paper: {
         width: '1200px'
+    },
+    header: {
+        backgroundColor: '#9C48F0',
+        color: 'white'
     }
 })
 )

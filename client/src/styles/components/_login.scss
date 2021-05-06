@@ -1,7 +1,7 @@
 .login-page {
     align-items: center;
-    background-image: url('../assets/loginimg.jpg');
-    background-size: cover;
+
+    background: linear-gradient(135deg, #FFC266, #D47100 70%);
     display: flex;
     justify-content: center;
     height: 100vh;
@@ -11,7 +11,9 @@
 }
 
 .login-page__box {
-    background: fade-out(#fff, .15);
+    background: white;
+    border-radius: 20px;
+     box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.2);
     background-position: center;
     border-radius: 15px;
 
@@ -28,6 +30,31 @@
     align-items: center;
 }
 
+.login-page__box-form h2 {
+    font-size: 2rem;
+    font-family: "Montserrat";
+    font-weight: 900;
+    
+    position: relative;
+}
+
 .login-page__box-form > * {
     margin: 1rem 0;
+}
+
+.button-login {
+    color: white;
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-top: 4rem;
+    height: 40px;
+    /* border-radius: 20px; */
+    background: linear-gradient(to right, #9C48F0, #7d0dee);
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.button-login:hover {
+    background: linear-gradient(to left, #914cd6, #7f0cf1);
 }

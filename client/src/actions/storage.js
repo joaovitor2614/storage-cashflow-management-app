@@ -108,9 +108,9 @@ export const editItemComercial = (item) => ({
 // checkar se o item ja ta no carrinho ou n para add ou editar
 export const updateItemComercial = (item) => {
   return (dispatch, getState) => {
-      console.log('here')
+ 
       let currentState = getState().storage.itemsComercial;
-      console.log('state', currentState)
+   
       
           if (currentState.some(itemComercial => itemComercial._id === item._id)) {
               dispatch(editItemComercial(item))

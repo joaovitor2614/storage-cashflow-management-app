@@ -24,10 +24,10 @@ router.get('/', auth, async (req, res) => {
 router.post(
   '/', 
   [
-    check('email', 'Please include a valid email').isEmail(),
+    check('email', 'Por favor insira um email válido').isEmail(),
     check(
         'password',
-        'Password is required'
+        'Senha é necessária'
     ).exists()
   ], 
  async (req, res) => {

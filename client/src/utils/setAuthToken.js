@@ -4,8 +4,7 @@ const setAuthToken = token => {
     if (token) {
         localStorage.setItem('token', token);
         api.defaults.headers.common['x-auth-token'] = token;
-        
-        
+       
     } else {
    
         localStorage.removeItem('token')

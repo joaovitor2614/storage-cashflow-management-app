@@ -58,3 +58,17 @@
   .button--mt {
     margin-top: 0.4rem;
   }
+
+  .button--login {
+    border-radius: 20px;;
+    background: linear-gradient(to right, #9C48F0, #7d0dee);
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #ffffff;
+    transition: 0.4s ease-out;
+    height: 45px;
+    width: 345px;
+    text-align: center;
+    margin-top: 4rem;
+  }
