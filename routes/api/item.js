@@ -28,7 +28,7 @@ router.post('/', auth, check('name', 'Nome do item é necessário').notEmpty(),
                         ...req.body
                     })
                     
-                    console.log('new Item', newItem)
+            
                     await newItem.save();
                     res.json(newItem)
                 } catch (err) {
@@ -78,7 +78,7 @@ router.post('/edit/:item_id', auth, async (req, res) => {
 //desc achar e remover item
 router.delete('/:item_id', auth, async (req, res) => {
     const { item_id } = req.params
-    console.log('item_id', item_id)
+  
    
     try {
         await Item.findByIdAndRemove(item_id);
@@ -101,7 +101,7 @@ router.post('/sales', auth, async (req, res) => {
    
     try {
         const items = await Item.find().sort({ date: -1 });
-        console.log('items', items)
+     
       
          products.forEach((product) => {
             let soldItem = items.find(item => item._id == product.product_id)
@@ -117,12 +117,11 @@ router.post('/sales', auth, async (req, res) => {
                             soldItem.save();
                     }
                 } else if (product.kgs !== 0) {
-                    console.log('product ', product)
-                    console.log('here weight')
+                  
                     let weightNumber = parseFloat(soldItem.weight, 10);
                     let previousWeight = soldItem.originalWeight;
                     soldItem.weight = weightNumber -= product.kgs
-                    console.log('weight after', soldItem.weight)
+                 
                     if (soldItem.weight <= 0) {
                             if (soldItem.storageAmount == 1) {
                                 soldItem.remove()

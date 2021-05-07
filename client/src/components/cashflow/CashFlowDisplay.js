@@ -29,23 +29,23 @@ const CashFlowDisplay = ({ item, handleAdd }) => {
     const toggleKg = () => setIsKg(!isKg);
     let [units, setUnits] = useState(0);
     let [kgs, setKgs] = useState(0);
-    const handleUnits = e => {
-    const value = parseFloat(e.target.value, 10);
+    const handleUnits = (e, amount) => {
+
         
-    if (value && value !== NaN) {
-        setUnits(value) 
+    if (e.target.value <= amount && e.target.value >= 0) {
+        setUnits(e.target.value) 
     }
     }
-    const handleKgs = e => {
-        const value = parseFloat(e.target.value, 10);
+    const handleKgs = (e, amount) => {
+       let amountToNumber = parseFloat(amount, 10)
         
-        if (value && value !== NaN) {
-        setKgs(value)
+        if (e.target.value <= amountToNumber && e.target.value >= 0) {
+        setKgs(e.target.value)
         }
     }
     const isDisabled = kgs !== 0 || units !== 0 ? false : true;
     const isDisabled2 = kgs === 0 || units === 0 ? false : true;
-    console.log('is Disabled', isDisabled)
+   
     const onSubmit = (e, item, units, kgs, isKg, perKg, perUnit) => {
         e.preventDefault()
          handleAdd(item, units, kgs, isKg, perKg, perUnit);
@@ -89,28 +89,34 @@ const CashFlowDisplay = ({ item, handleAdd }) => {
                         <div >
                             {isKg ? (
                                 <div className="cashflow-page__group-list__item-amount">
-                                    <IconButton onClick={() => setKgs(++kgs)} size="small">
+                                    <IconButton 
+                                    onClick={() => kgs < item.weight && setKgs(++kgs)} 
+                                    size="small">
                                         <PlusOneIcon />
                                     </IconButton>
                                     <TextField className={classes.input} size="small"  
                                     variant="outlined" 
                                      placeholder="Kg"
-                                    value={kgs} onChange={handleKgs} />
-                                    <IconButton onClick={() => setKgs(--kgs)} size="small">
+                                    value={kgs} onChange={(e) => handleKgs(e, item.weight)} />
+                                    <IconButton 
+                                    onClick={() => kgs > 0 && setKgs(--kgs)} size="small">
                                         <ExposureNeg1Icon />
                                     </IconButton>
                                 </div>
                             
                             ) : (
                                 <div className="cashflow-page__group-list__item-amount">
-                                    <IconButton onClick={() => setUnits(++units)} size="small">
+                                    <IconButton 
+                                    onClick={() => units < item.storageAmount 
+                                    && setUnits(++units)} size="small">
                                         <PlusOneIcon />
                                     </IconButton>
                                     <TextField className={classes.input} size="small"  
                                     variant="outlined"
                                      placeholder="Unidades" 
-                                    value={units} onChange={handleUnits} />
-                                    <IconButton onClick={() => setUnits(--units)} size="small">
+                                    value={units} onChange={(e) => handleUnits(e, item.storageAmount)} />
+                                    <IconButton 
+                                    onClick={() => units > 0 && setUnits(--units)} size="small">
                                         <ExposureNeg1Icon />
                                     </IconButton>
                                 </div>

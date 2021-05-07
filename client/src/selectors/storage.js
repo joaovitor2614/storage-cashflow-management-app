@@ -7,7 +7,7 @@ const filterByQe = (item, byQe) => {
       break;
     case '1 a 5':
       if (item.storageAmount >= 1 && item.storageAmount <= 5) {
-        console.log('item sotrage amount', item.storageAmount)
+      
         return item
       }
       break

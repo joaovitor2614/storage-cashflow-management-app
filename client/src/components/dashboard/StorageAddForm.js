@@ -13,7 +13,7 @@ import { useStorageForm } from '../../styles/components/storage/useStorage';
 
 
 const StorageAddForm = ({ handleSubmit, handleClose, data = '' }) => {
-    console.log(data)
+
     const classes = useStorageForm();
     const initialValues = {
         name: data ? data.name : '',
@@ -35,7 +35,7 @@ const StorageAddForm = ({ handleSubmit, handleClose, data = '' }) => {
               validationSchema={itemSchema}
               onSubmit={(values, { setSubmitting}) => {
                 setSubmitting(true);
-                console.log(values);
+               
                 handleSubmit(values, data !== '' ? data.id : '')
                 handleClose();
                 setSubmitting(false);

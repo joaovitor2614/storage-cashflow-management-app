@@ -51,7 +51,7 @@ const StorageTable = ({ items, filters }) => {
     const [open, setOpen] = useState(false)
     // variavel rows será populada com dados dos produtos dinamicamente de acordo com os filtros presentes no estado global
     const { rows } = useDataTable(items, filters);
-    console.log('rows in talbe', rows)
+
     const classes = useStorageTable();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);

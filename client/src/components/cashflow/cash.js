@@ -31,9 +31,9 @@ export const getKgPrice = (item) => {
     const weightToNumber = parseFloat(item.originalWeight, 10);
     const profitToNumber = parseFloat(item.profitKg, 10);
     if (item.profitKg) {
-       console.log('profitToNum', profitToNumber, 'priceTo', priceToNumber, 'weight', weightToNumber);
+  
        kgPrice = ((profitToNumber / 100) * priceToNumber + priceToNumber) / weightToNumber
-       console.log('kgPrice', kgPrice)
+       
     }
     return kgPrice
 }

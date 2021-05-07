@@ -12,6 +12,8 @@ const itemSchema = yup.object().shape({
     pricePerUnit: yup.number('Preço de fábrica(unid.) deve ser um número')
     .required('Preço de fabrica(unid.) do produto é necessário')
     .positive('Preço de fábrica(unid.) deve ser um número maior que 0'),
+    weight: yup.number('Peso deve ser um número')
+    .positive('Peso deve ser um número positivo'),
   
     
     
@@ -24,7 +26,8 @@ const itemSchema = yup.object().shape({
     .positive('Porcentagem de lucro deve ser positiva')
     .when('weight', {
         is: Number,
-        then: yup.number('Preço por kg deve um número').required('Para ração, porcentagem de lucro por kg é necessária')
+        then: yup.number('Preço por kg deve um número')
+        .required('Para ração, porcentagem de lucro por kg é necessária')
     }),
 
     profitUnit: yup.number('Preço por unidade deve um número')

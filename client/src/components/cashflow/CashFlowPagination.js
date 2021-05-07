@@ -4,12 +4,12 @@ import ReactPaginate from 'react-paginate'
 
 const CashFlowPagination = ({ items, handleAdd }) => {
     const [data, setData] = useState(items.slice(0, 50));
-    console.log('data 11', data)
+
     const [pageNumber, setPageNumber] = useState(0);
 
     const dataPerPage = 6;
     const itemsVisited = pageNumber * dataPerPage;
-    const displayPages = data
+    const displayPages = items
     .slice(itemsVisited, itemsVisited + dataPerPage)
     .map((dt) => {
         return (
