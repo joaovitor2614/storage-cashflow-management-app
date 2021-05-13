@@ -50,9 +50,9 @@ const CashFlow = () => {
     const handleRemove = (id) => {
         dispatch(removeItemComercial(id))
     }
-    const handleAddSale = (products, balance) => {
+    const handleAddSale = (products, balance, paymentType) => {
         console.log('handle sales')
-        dispatch(addSale({ products, balance }))
+        dispatch(addSale({ products, balance, paymentType }))
     }
     const balance = getTotalBalance(itemsCart)
    

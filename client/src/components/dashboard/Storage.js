@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getItems } from '../../actions/storage';
+// components
 import LoadingPage from '../LoadingPage';
 import StorageActions from './StorageActions';
-
 import StorageTable from './StorageTable';
 
 const Storage = () => {

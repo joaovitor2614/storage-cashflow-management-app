@@ -41,8 +41,8 @@
     height: 36rem;
    display: flex;
    flex-direction: column;
-    padding: 11px;
-    width: 31rem;
+    padding: 5px;
+    width: 44rem;
     margin-left: 1rem;
  
     white-space: pre-wrap;
@@ -71,7 +71,7 @@
 
 .cashflow-page__group-cart-form__box {
     padding: 10px;
-    width: 31rem;
+    width: 33rem;
   
 }
 
@@ -80,6 +80,10 @@
     flex-direction: row;
     align-items: center;
     text-align: center;
+}
+
+.cashflow-page__group-cart-form__box-content * {
+   margin: 0 .2rem
 }
 
 .cashflow-page__group-cart__list {

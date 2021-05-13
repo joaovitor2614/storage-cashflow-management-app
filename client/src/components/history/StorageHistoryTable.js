@@ -13,16 +13,17 @@ import useDataTableDaily from '../hooks/useDataTableDaily';
 
 
 const columns = [
-    { id: 'name', label: 'Produto', align: 'left', minWidth: 100 },
+    { id: 'name', label: 'Produto', align: 'left', minWidth: 150 },
     { id: 'units', label: 'Unidades', minWidth: 70, align: 'center' },
+    { id: 'paymentType', label: 'Método', minWidth: 100, align: 'center' },
     { id: 'kgs', label: 'Quilo', minWidth: 70, align: 'center' },
-    { id: 'date', label: 'Hora', align: 'center', minWidth: 70 },
+    { id: 'date', label: 'Hora', align: 'center', minWidth: 100 },
 ]
 
 const useStyles = makeStyles({
     root: {
         borderRadius: '30px',
-        width: '570px',
+        width: '690px',
       
         wordBreak: 'break-all'
       

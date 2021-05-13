@@ -2,25 +2,15 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 // material-ui components
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
-import SearchIcon from '@material-ui/icons/Search';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import IconButton from '@material-ui/core/IconButton';
-import Collapse from '@material-ui/core/Collapse';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
-import Tooltip from '@material-ui/core/Tooltip';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FilterListRoundedIcon from '@material-ui/icons/FilterListRounded';
+import { makeStyles, TextField, MenuItem, InputLabel, 
+    SearchIcon, InputAdornment, Collapse, AddIcon, Fab, 
+    Tooltip, FilterListRoundedIcon, IconButton, Select} from '../material-ui/material-ui'
 // filter & crud
-import { useButton } from '../../styles/reusable/useButton';
-import { storageByName, storageByQe, storageByCategory, clearFilter } from '../../actions/storageFilter';
-import StorageAddModal from './StorageAddModal';
+import { storageByName, storageByQe, 
+    storageByCategory, clearFilter } from '../../actions/storageFilter';
 import { addItem } from '../../actions/storage'
+// components
+import StorageAddModal from './StorageAddModal';
 
 
 export const useStyles = makeStyles(() => ({

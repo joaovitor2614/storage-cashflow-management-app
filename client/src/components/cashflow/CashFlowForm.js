@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
+// material-ui
+import { Button, Paper, TextField, makeStyles, 
+    Select, MenuItem, AttachMoneyIcon } from '../material-ui/material-ui'
 import numeral from 'numeral'
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import { numeralConfig } from './numeral';
 // passando packages de formatação de numero pra portugues
+import { numeralConfig } from './numeral';
 numeralConfig();
 numeral.locale('br')
 
@@ -27,6 +25,8 @@ export const useStyles = makeStyles(() => ({
 
 const CashFlowForm = ({ handleAddSale, balance, items }) => {
     const classes = useStyles();
+    const [paymentType, setPaymentType] = useState('Método de pagamento');
+    const onPaymentType = (e) => setPaymentType(e.target.value)
     const [value, setValue] = useState('');
     const handleChange = (e) => {
         const amount = e.target.value
@@ -47,8 +47,9 @@ const CashFlowForm = ({ handleAddSale, balance, items }) => {
                 product_id: product._id
             })
         })
-        handleAddSale(newProducts, balance)
+        handleAddSale(newProducts, balance, paymentType)
         setValue('')
+        setPaymentType('Método de pagamento')
        
     }
     return (
@@ -57,7 +58,7 @@ const CashFlowForm = ({ handleAddSale, balance, items }) => {
             onSubmit={(e) => handleSubmit(e, items, balance)}>
                 <TextField 
                     id="sale-add" placeholder="R$0.00"  className={classes.input}
-                      variant="outlined"
+                      variant="outlined" autoComplete="off"
                     value={value} onChange={(e) => handleChange(e)} 
                 />
                 
@@ -67,9 +68,18 @@ const CashFlowForm = ({ handleAddSale, balance, items }) => {
                 </h5>
                 
                 <h5> Balanço total: {numeral(balance).format('$0,0.00')}</h5>
+      
+                <Select value={paymentType} onChange={(e) => onPaymentType(e)}>
+                    <MenuItem value='Método de pagamento'>Método de pagamento</MenuItem>
+                    <MenuItem value='À vista'>À vista</MenuItem>
+                    <MenuItem value='Cartão crédito'>Crédito</MenuItem>
+                    <MenuItem value='Cartão débito'>Débito</MenuItem>
+                    <MenuItem value='PIX'>PIX</MenuItem>
+                </Select>
 
                 <Button size="small" variant="contained" color="primary" type="submit"
-                disabled={value === '' || !items.length > 1 ? true : false} >
+                disabled={value === '' || !items.length > 1 ? true : false 
+                || paymentType === 'Método de pagamento'}>
                     Finalizar compra
                 </Button>
             </form>

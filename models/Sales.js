@@ -13,6 +13,7 @@ const SalesSchema = new mongoose.Schema({
                 }
                 
             ],
+            paymentType: String,
             
             balance: {
                 type: String,

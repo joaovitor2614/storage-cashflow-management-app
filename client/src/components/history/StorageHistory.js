@@ -13,7 +13,7 @@ import LoadingPage from '../LoadingPage';
 const useStyles = makeStyles((theme) => ({
    panel: {
 
-    width: '65rem',
+    width: '69rem',
     height: '985px'
    },
    tab: {
