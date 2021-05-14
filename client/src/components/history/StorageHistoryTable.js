@@ -1,29 +1,36 @@
 import React, { useState, Fragment } from 'react';
 import { useDispatch } from 'react-redux'
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import useDataTableDaily from '../hooks/useDataTableDaily';
+import { editSale, removeSale } from '../../actions/sales';
+import useDataTableDaily from '../hooks/useDataTableDaily'
+import { DeleteIcon, IconButton, Table, TableCell, TableBody, TableContainer, TableHead,
+TablePagination, TableRow, Paper, makeStyles } from '../material-ui/material-ui';
+import StorageModal from './StorageModal';
 
+const RenderDeleteButton = ({ handleRemove, id }) => {
+   return (
+    <strong>
+        <IconButton onClick={() => {handleRemove(id)}}>
+            <DeleteIcon />
+        </IconButton>
+    </strong>
+)
+
+} 
 
 const columns = [
     { id: 'name', label: 'Produto', align: 'left', minWidth: 150 },
     { id: 'units', label: 'Unidades', minWidth: 70, align: 'center' },
     { id: 'paymentType', label: 'Método', minWidth: 100, align: 'center' },
     { id: 'kgs', label: 'Quilo', minWidth: 70, align: 'center' },
-    { id: 'date', label: 'Hora', align: 'center', minWidth: 100 },
+    { id: 'date', label: 'Data/Hora', align: 'center', minWidth: 100 },
+    { id: 'operation', label: 'Operação', renderCell: RenderDeleteButton,
+     disableClickEventBubbling: true, align: 'right', minWidth: 70 },
 ]
 
 const useStyles = makeStyles({
     root: {
         borderRadius: '30px',
-        width: '690px',
+        width: '770px',
       
         wordBreak: 'break-all'
       
@@ -35,9 +42,11 @@ const useStyles = makeStyles({
     
 })
 
-const StorageHistoryTable = ({ itemSales, type }) => {
+const StorageHistoryTable = ({ itemSales, type, }) => {
+ 
+
     const classes = useStyles();
-    
+    const dispatch = useDispatch()
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(9);
     const { rows } = useDataTableDaily(itemSales, type)
@@ -49,6 +58,12 @@ const StorageHistoryTable = ({ itemSales, type }) => {
         setRowsPerPage(+e.target.value);
         setPage(0);
     }
+
+    // remover venda
+    const handleRemove = (id) => {
+        dispatch(removeSale(id))
+    }
+ 
 
     return ( 
             <Paper className={classes.root}>
@@ -63,7 +78,9 @@ const StorageHistoryTable = ({ itemSales, type }) => {
                                                 style={{ minWidth: column.minWidth }}
                                                 >
                                                     {column.label}
+                                                    
                                                 </TableCell>
+                                                
                                             ))}
                                     </TableRow>
                                 </TableHead>
@@ -74,13 +91,17 @@ const StorageHistoryTable = ({ itemSales, type }) => {
                                                 <TableRow 
                                                 hover role="checkbox" 
                                                 tabIndex={-1} key={row._id}
+                                              
+                                
                                                 >
                                                     {columns.map((column) => {
                                                         const value = row[column.id];
                                                         return (
                                                             <TableCell key={column.id} align={column.align}>
                                                                 {column.format && typeof value === 'number' ? column.format(value) : value}
+                                                                {column.renderCell && <RenderDeleteButton handleRemove={handleRemove} id={row._id} />}
                                                             </TableCell>
+                                                            
                                                         );
                                                     })}
                                                 </TableRow>
@@ -98,6 +119,7 @@ const StorageHistoryTable = ({ itemSales, type }) => {
                             onChangePage={handleChangePage}
                             onChangeRowsPerPage={handleChangeRowsPerPage}>
                         </TablePagination>
+                     
             </Paper>
            
          

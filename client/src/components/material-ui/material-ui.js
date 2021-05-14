@@ -1,5 +1,9 @@
 // export material-ui components
 import Select from '@material-ui/core/Select';
+import Fade from '@material-ui/core/Fade';
+import Modal from '@material-ui/core/Modal';
+import CloseIcon from '@material-ui/icons/Close';
+import Backdrop from '@material-ui/core/Backdrop';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import { makeStyles } from '@material-ui/core/styles'
@@ -22,9 +26,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 export { Select, MenuItem, InputLabel, makeStyles, 
     Button, Paper, TextField, AttachMoneyIcon, SearchIcon,
 InputAdornment, IconButton, Collapse, AddIcon, Fab, Tooltip, 
 FilterListRoundedIcon, Table, TableBody, TableCell, 
-TableContainer, TableHead, TablePagination, TableRow }
+TableContainer, TableHead, TablePagination, TableRow, 
+DeleteIcon, Fade, Backdrop, Modal, CloseIcon }

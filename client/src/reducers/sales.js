@@ -21,6 +21,14 @@ const salesReducer = (state = initialState, action) => {
                 },
                 loading: false
             }
+        case 'REMOVE_SALE':
+            return {
+                ...state,
+                sales: {
+                    dailySales: state.sales.dailySales.filter(({ _id }) => _id !== payload.id),
+                    monthlySales: state.sales.monthlySales.filter(({ _id }) => _id !== payload.id)
+                }
+            }
         case 'LOGOUT':
             return {
                 sales: {

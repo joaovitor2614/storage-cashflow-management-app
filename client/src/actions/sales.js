@@ -55,3 +55,45 @@ export const getSales = () => async dispatch => {
 
 
 
+// excluir venda
+export const removeSale = (id) => async dispatch => {
+    try {
+        console.log('id', id)
+        dispatch({
+            type: 'REMOVE_SALE',
+            payload: { id }
+        })
+        const res = await api.delete(`/sales/${id}`);
+        console.log(res)
+        
+     
+       
+    } catch (err) {
+        console.log(err)
+        console.log(err.message)
+        dispatch({
+            type: 'SALES_ERROR'
+        })
+        
+    }
+}
+
+// editar venda
+export const editSale = (id, product_id, data) => async dispatch => {
+    try {
+      
+    
+        const res = await api.put(`/sales/${id}/${product_id}`, data);
+        console.log(res)
+        
+     
+       
+    } catch (err) {
+        console.log(err)
+        console.log(err.message)
+        dispatch({
+            type: 'SALES_ERROR'
+        })
+        
+    }
+}

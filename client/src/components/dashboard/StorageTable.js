@@ -18,8 +18,15 @@ const columns = [
     { id: 'weight', label: 'Peso(KG)', align: 'center', minWidth: 70 },
     { id: 'vU', label: 'Preço(R$)',  minWidth: 70, align: 'center'},
     { id: 'qE', label: 'Quant em estoque',  minWidth: 70, align: 'center'},
-    { id: 'profitUnit', label: 'Lucro(unit.)',  minWidth: 60, align: 'center', format: (value) => value.toLocaleString('pt-BR') },
-    { id: 'profitKg', label: 'Lucro(kg)',  minWidth: 60, align: 'center', format: (value) => value.toLocaleString('pt-BR') },
+    { id: 'priceKg', label: 'Preço V kg(R$)',  minWidth: 70, align: 'center'},
+    { id: 'priceUnit', label: 'Preço V Unid.(R$)',  minWidth: 70, align: 'center'},
+
+    { id: 'profitUnit', label: 'Lucro(unid.)',  minWidth: 60, align: 'center', 
+    format: (value) => value.toLocaleString('pt-BR') },
+    
+    { id: 'profitKg', label: 'Lucro(kg)',  minWidth: 60, align: 'center', 
+    format: (value) => value.toLocaleString('pt-BR') },
+
     { id: 'validity', label: 'Validade', minWidth: 120, align: 'center' },
  
 ]

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Tab, Tabs } from '@material-ui/core';
+import { AppBar, IconButton, Tab, Tabs } from '@material-ui/core';
 import { TabContent, a11yProps } from './Tab'
 import { getSales } from '../../actions/sales';
 import StorageHistoryDaily from './StorageHistoryDaily';
 import { getSalesBalance } from './storage';
 import StorageHistoryMonthly from './StorageHistoryMonthly';
 import LoadingPage from '../LoadingPage';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
    }
 }))
 
+
 const StorageHistory = () => {
     const classes = useStyles();
     const dispatch = useDispatch()
@@ -34,6 +36,8 @@ const StorageHistory = () => {
     // pegar balanço total de vendas
     const dailyBalance = getSalesBalance(sales.dailySales);
     const monthlyBalance = getSalesBalance(sales.monthlySales);
+    
+   
     useEffect(() => {
         dispatch(getSales())
     }, [])

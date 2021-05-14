@@ -66,5 +66,34 @@ router.get('/', auth, async (req, res) => {
         res.status(500).send('Server error')
     }
 })
-
+/*
+//@method  put /api/sales/sale_id
+//desc editar registro de venda
+router.put('/:sale_id/:product_id', auth, async (req, res) => {
+    const { sale_id } = req.params
+     try {
+         const sale = await Sales.findOne({ _id: sale_id });
+         console.log('sale', sale)
+         sale.date = Date(req.body.date);
+         sale.paymentType = req.body.paymentType;
+         const product = sale.products.find(product => product._id === product_id);
+         console.log('product', product)
+         if (!product) {
+            res.json({ msg: 'Produto não encontrado em registro de venda'})
+         }
+         const productIndex = sale.products.indexOf(product)
+        
+         sale.products[productIndex].units = req.body.units;
+        
+         sale.products[productIndex].kgs = req.body.kgs;
+         sale.products[productIndex].name = req.body.name;
+         await sale.save();
+         res.json({ sale })
+     } catch (err) {
+         console.log(err.message)
+         res.status(500).send('Server error')
+     }
+     
+ })
+*/
 module.exports = router
