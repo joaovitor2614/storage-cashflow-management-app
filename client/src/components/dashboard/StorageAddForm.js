@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Formik, Form } from 'formik';
+import numeral from 'numeral'
 // schema 
 import itemSchema from '../../validation/itemSchema'
 // material ui
@@ -7,26 +8,36 @@ import MyTextField from '../custom fields/MyTextField'
 import MySelectField from '../custom fields/MySelectField'
 import Button from '@material-ui/core/Button';
 import { useStorageForm } from '../../styles/components/storage/useStorage';
+import { getKgPrice, getUnitPrice } from '../cashflow/cash'
 
 
 
 
 
 const StorageAddForm = ({ handleSubmit, handleClose, data = '' }) => {
-
+ 
     const classes = useStorageForm();
     const initialValues = {
         name: data ? data.name : '',
         weight: data ? data.weight : '',
         category: data ? data.category : '',
         validity: data ? data.validity : '',
-        pricePerUnit: data ? data.vU : '',
+        pricePerUnit: data ? parseFloat(data.vU.replace("R$", "")) : '',
         storageAmount: data ? data.qE : '',
-        profitUnit: data ? data.profitUnit : '',
-        profitKg: data ? data.profitKg : ''
+        profitUnit: data ? parseFloat(data.profitUnit.replace("%", "")) : '',
+        profitKg: data ? parseFloat(data.profitKg.replace("%", "")) : ''
     }
     // alterar para mostrar ou não input do lucro por kg
-    const handleSwitch = () => setIsKg(!isKg)
+    const handleSwitch = () => setIsKg(!isKg);
+    const unitPrice = (values) => {
+        // colocando peso do formulário como peso original dinamicamente
+         values.originalWeight = values.weight
+         return getUnitPrice(values);
+    }
+    const kgPrice = (values) => {
+        return getKgPrice(values)
+    }
+
     return (
         <div>
             <Formik
@@ -41,7 +52,7 @@ const StorageAddForm = ({ handleSubmit, handleClose, data = '' }) => {
                 setSubmitting(false);
             }}
             >
-               {({ errors, touched, isValid, dirty, isSubmitting, handleChange}) => (
+               {({ errors, values, touched, isValid, dirty, isSubmitting, handleChange}) => (
                    <Form>
                         <div className={classes.group}>
                             <MyTextField name="name" placeholder="Insira nome do produto" id="input-name" label="* Título" />
@@ -69,7 +80,9 @@ const StorageAddForm = ({ handleSubmit, handleClose, data = '' }) => {
                             id="input-lu" label="Lucro por unidade(%)"  />
                             <MyTextField name="profitKg"  placeholder="Insira lucro por kg" 
                             id="input-lkg" type='number' label="Lucro por KG(%)" />
+    
                         </div>
+                       
 
                         
                        
@@ -80,11 +93,20 @@ const StorageAddForm = ({ handleSubmit, handleClose, data = '' }) => {
                          
                         
 
-                       
-                        <Button disabled={!(isValid && dirty)  || isSubmitting} 
-                        variant="contained" type="submit" color="primary">
-                            Atualizar estoque
-                        </Button>
+                        <div className={classes.actions}>
+                            <Button disabled={!(isValid && dirty)  || isSubmitting} 
+                            variant="contained" type="submit" color="primary">
+                                Atualizar estoque
+                            </Button>
+                            <div className={classes.prices}>
+                                <h4>Preço Venda Quilo: {numeral(kgPrice(values)).format('$0,0.00')}
+                                </h4>
+                                <h4>Preço Venda Unidade: {numeral(unitPrice(values)).format('$0,0.00')}
+                                </h4>
+                            </div>
+                        </div>
+                        
+
                    </Form>
                    
                )}

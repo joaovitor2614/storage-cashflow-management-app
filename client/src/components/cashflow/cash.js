@@ -41,13 +41,15 @@ export const getKgPrice = (item) => {
 // pegar preço por quilo
 export const getUnitPrice = (item) => {
     let unitPrice = 0;
+ 
     const priceToNumber = parseFloat(item.pricePerUnit, 10);
 
     const profitToNumber = parseFloat(item.profitUnit, 10);
+
     if (item.profitUnit) {
        return unitPrice = ((profitToNumber / 100) * priceToNumber + priceToNumber)
     }
-    return profitUnit;
+    return unitPrice
 }
 
 

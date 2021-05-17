@@ -6,7 +6,7 @@ import { numeralConfig } from './numeral';
 import ReactPaginate from 'react-paginate'
 
 const CashFlowCartPagination = ({ items, handleAdd = '', handleRemove = '' }) => {
-    console.log('items', items)
+ 
     
     const [pageNumber, setPageNumber] = useState(0);
  

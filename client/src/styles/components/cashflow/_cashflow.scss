@@ -193,6 +193,17 @@
     padding: 3px;
 }
 
+.cashflow-page__group-list__item-actions-info {
+    align-items: center;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: row;
+}
+
+.cashflow-page__group-list__item-actions-info * {
+    margin: 0 4px;
+}
+
 .cashflow-page__group-list__item-amount {
     display: flex;
     flex-direction: row;

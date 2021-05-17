@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import getStorage from '../../selectors/storage';
 import { getKgPrice, getUnitPrice } from '../cashflow/cash';
-
+import numeral from 'numeral'
 
 const createData = (name, category, weight, vU, qE, priceKg, priceUnit,
      validity, profitUnit, profitKg, id) => {
@@ -23,9 +23,9 @@ const useDataTable = (items, filters) => {
             itemsData.forEach((item) => {
                 let priceKg = getKgPrice(item);
                 let priceUnit = getUnitPrice(item);
-                let data = createData(item.name, item.category, item.weight, item.pricePerUnit, 
-                    item.storageAmount, priceKg, priceUnit, item.validity, 
-                    item.profitUnit, item.profitKg, item._id);
+                let data = createData(item.name, item.category, item.weight, `R$${item.pricePerUnit}`, 
+                    item.storageAmount, `R$${priceKg}`, `R$${priceUnit}`, item.validity, 
+                    `${item.profitUnit}%`, `${item.profitKg}%`, item._id);
                 products.unshift(data)
                 
             });

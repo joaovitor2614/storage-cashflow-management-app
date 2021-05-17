@@ -82,9 +82,9 @@ const CashFlowDisplay = ({ item, handleAdd }) => {
                         
                     </div>
                     <div className="cashflow-page__group-list__item-actions">
-                        <div >
+                        <div className="cashflow-page__group-list__item-actions-info">
                             <small>Estoque: {item.storageAmount}</small>
-                            
+                            {item.weight && <small>Quilo: {item.weight}</small>}
                         </div>
                         <div >
                             {isKg ? (

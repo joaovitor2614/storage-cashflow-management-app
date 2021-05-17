@@ -48,6 +48,7 @@ export const useStorageModal = makeStyles((theme) => ({
 
 export const useStorageForm =  makeStyles(() => ({
     group: {
+        alignItems: 'center',
         display: 'flex',
         flexDirection: 'row',
         margin: '23px 0',
@@ -58,6 +59,27 @@ export const useStorageForm =  makeStyles(() => ({
             margin: '0 16px'
             }
      
-    },
-}))
+        },
+        actions: {
+            alignItems: 'center',
+            display: 'flex',
+            flexDirection: 'row',
+            margin: '3px 0',
+            verticalAlign: 'middle',
+            
+            "& > *": {
+                margin: '0 32px'
+                }
+         
+            },
+        prices: {
+            display: 'flex',
+            flexDirection: 'row',
+            "& > *": {
+                margin: '0 11px'
+                }
+         
+        }
+    })
+)
 

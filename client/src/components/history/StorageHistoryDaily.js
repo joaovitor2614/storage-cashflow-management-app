@@ -7,8 +7,7 @@ import StorageHistoryTable from './StorageHistoryTable';
 
 
 const StorageHistoryDaily = ({ dailySales, dailyBalance }) => {
-    console.log(dailySales)
-    console.log(dailyBalance)
+
    
     return (
         <div className='storage-history__daily'>
