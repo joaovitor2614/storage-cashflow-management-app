@@ -30,6 +30,7 @@ const StorageAddForm = ({ handleSubmit, handleClose, data = '' }) => {
     // alterar para mostrar ou não input do lucro por kg
     const handleSwitch = () => setIsKg(!isKg);
     const unitPrice = (values) => {
+        console.log('price unit add', values)
         // colocando peso do formulário como peso original dinamicamente
          values.originalWeight = values.weight
          return getUnitPrice(values);

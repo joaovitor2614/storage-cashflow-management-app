@@ -31,7 +31,7 @@ const CashFlowDisplay = ({ item, handleAdd }) => {
     let [kgs, setKgs] = useState(0);
     const handleUnits = (e, amount) => {
 
-        
+    const handleUnits = (e, amount)
     if (e.target.value <= amount && e.target.value >= 0) {
         setUnits(e.target.value) 
     }
@@ -43,15 +43,16 @@ const CashFlowDisplay = ({ item, handleAdd }) => {
         setKgs(e.target.value)
         }
     }
-    const isDisabled = kgs !== 0 || units !== 0 ? false : true;
-    const isDisabled2 = kgs === 0 || units === 0 ? false : true;
+    const isDisabled = kgs != 0 || units != 0 ? false : true;
+    const isDisabled2 = kgs == 0 || units == 0 ? false : true;
    
     const onSubmit = (e, item, units, kgs, isKg, perKg, perUnit) => {
         e.preventDefault()
          handleAdd(item, units, kgs, isKg, perKg, perUnit);
          setUnits(0);
          setKgs(0)
-    } 
+    }
+ 
     return (
   
         
@@ -83,7 +84,7 @@ const CashFlowDisplay = ({ item, handleAdd }) => {
                     </div>
                     <div className="cashflow-page__group-list__item-actions">
                         <div className="cashflow-page__group-list__item-actions-info">
-                            <small>Estoque: {item.storageAmount}</small>
+                            <small>Unidade: {item.storageAmount}</small>
                             {item.weight && <small>Quilo: {item.weight}</small>}
                         </div>
                         <div >
