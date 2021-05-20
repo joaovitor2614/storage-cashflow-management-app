@@ -12,6 +12,14 @@ import { loadUser } from '../actions/auth';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import SideBar from '../components/layout/SideBar';
+import Client from '../components/client/Client';
+import AddClient from '../components/client/AddClient';
+
+import EditClient from '../components/client/EditClient';
+import Profile from '../components/client/profile/Profile';
+import Bills from '../components/bills/Bills';
+import AddBill from '../components/bills/AddBill';
+import EditBill from '../components/bills/EditBill';
 
 
 
@@ -20,6 +28,7 @@ import SideBar from '../components/layout/SideBar';
 
 const AppRouter = () => {
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
 
    const dispatch = useDispatch()
     useEffect(() => {
@@ -60,7 +69,14 @@ const AppRouter = () => {
                     <PublicRoute exact path='/' component={Login} />
                     <PrivateRoute exact path="/storage" component={Storage} />
                     <PrivateRoute exact path="/cashflow" component={CashFlow} />
+                    <PrivateRoute exact path="/client" component={Client} />
+                    <PrivateRoute exact path="/update-client/:id" component={EditClient} />
+                    <PrivateRoute exact path="/add-client"  component={AddClient} />
                     <PrivateRoute exact path="/storage-history" component={StorageHistory} />
+                    <PrivateRoute exact path="/profile/:id" component={Profile} />
+                    <PrivateRoute exact path="/bills" component={Bills} />
+                    <PrivateRoute exact path="/add-bill" component={AddBill} />
+                    <PrivateRoute exact path="/edit-bill/:id" component={EditBill} />
                 </Switch >
        
 

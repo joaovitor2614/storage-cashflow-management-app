@@ -15,7 +15,7 @@ export const addSale = (data) => async dispatch => {
         })
         // atualizar estoque após registro de comprar
         dispatch(updateStorage(data.products))
-        toast.success('✔️  Compra registrada com sucesso, estoque atualizado', {
+        toast.default('✔️  Compra registrada com sucesso, estoque atualizado', {
             position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,

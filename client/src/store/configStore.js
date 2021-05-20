@@ -2,10 +2,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import authReducer from '../reducers/auth'
+import clientReducer from '../reducers/client';
 import salesReducer from '../reducers/sales';
 import storageReducer from '../reducers/storage'
 import storageFilterReducer from '../reducers/storageFilter';
+import clientFilterReducer from '../reducers/clientFilter';
 import setAuthToken from '../utils/setAuthToken';
+import billsReducer from '../reducers/bills';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
@@ -15,7 +18,10 @@ const store = createStore(
             auth: authReducer,
             storage: storageReducer,
             storageFilter: storageFilterReducer,
-            sales: salesReducer
+            sales: salesReducer,
+            client: clientReducer,
+            clientFilter: clientFilterReducer,
+            bills: billsReducer
        
         }),
         composeEnhancers(applyMiddleware(thunk))

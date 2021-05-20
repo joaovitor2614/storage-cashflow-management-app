@@ -1,6 +1,9 @@
 // export material-ui components
 import Select from '@material-ui/core/Select';
+import Grid from '@material-ui/core/Grid';
 import Fade from '@material-ui/core/Fade';
+import EditIcon from '@material-ui/icons/Edit';
+import Box from '@material-ui/core/Box';
 import Modal from '@material-ui/core/Modal';
 import CloseIcon from '@material-ui/icons/Close';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -27,10 +30,21 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import DeleteIcon from '@material-ui/icons/Delete';
+import PeopleIcon from '@material-ui/icons/People';
+import StorageIcon from '@material-ui/icons/Storage';
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import ReceiptIcon from '@material-ui/icons/Receipt';
+import PostAddIcon from '@material-ui/icons/PostAdd';
 
-export { Select, MenuItem, InputLabel, makeStyles, 
+export { Select, EditIcon, MenuItem, InputLabel, makeStyles, 
     Button, Paper, TextField, AttachMoneyIcon, SearchIcon,
 InputAdornment, IconButton, Collapse, AddIcon, Fab, Tooltip, 
 FilterListRoundedIcon, Table, TableBody, TableCell, 
 TableContainer, TableHead, TablePagination, TableRow, 
-DeleteIcon, Fade, Backdrop, Modal, CloseIcon }
+DeleteIcon, Fade, Backdrop, Modal, CloseIcon, PeopleIcon,
+StorageIcon, AssessmentIcon, BusinessCenterIcon, ExitToAppIcon, 
+Box, Grid, PersonAddIcon, DashboardIcon, ReceiptIcon, PostAddIcon }
