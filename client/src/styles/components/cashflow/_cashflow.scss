@@ -19,7 +19,7 @@
  
     height: 37rem;
    padding: 15px;
-   width: 59rem;
+   width: 67rem;
     
 }
 
@@ -30,7 +30,7 @@
     border-right: 1px solid black;
     padding-right: 15px;
     height: 36rem;
-    width: 58.5rem;
+    width: 62rem;
     
    
 }
@@ -42,7 +42,7 @@
    display: flex;
    flex-direction: column;
     padding: 5px;
-    width: 44rem;
+    width: 47rem;
     margin-left: 1rem;
  
     white-space: pre-wrap;
@@ -75,6 +75,7 @@
   
 }
 
+
 .cashflow-page__group-cart-form__box-content {
     display: flex;
     flex-direction: row;
@@ -83,8 +84,19 @@
 }
 
 .cashflow-page__group-cart-form__box-content * {
-   margin: 0 .2rem
+   margin: 0 1.2rem
 }
+
+.cashflow-page__group-cart-form__box-content2 {
+    @extend .cashflow-page__group-cart-form__box-content;
+    margin-top: 0.4rem;
+    padding: 10px;
+}
+
+.cashflow-page__group-cart-form__box-content2 * {
+    margin: 1rem;
+}
+
 
 .cashflow-page__group-cart__list {
  

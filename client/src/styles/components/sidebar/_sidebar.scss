@@ -21,3 +21,31 @@
 .side-bar__item > * {
     margin: 0 13px;
 }
+
+.side-bar__item-2 {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    margin: 2px 0;
+    text-align: center;
+    padding: 3px;
+    padding-left: 10px;
+}
+
+.side-bar__item-2 > * {
+    margin: 0 13px;
+}
+
+
+.side-bar__menu {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    margin: 15px 0;
+    text-align: center;
+    padding: 4px;
+}
+
+.side-bar__menu > * {
+    margin: 0 5px;
+}

@@ -107,3 +107,79 @@ export const editClient = (id, data) => async dispatch => {
         
     }
 }
+
+// procurar e pegar clientes por nome
+export const findNameClient = (name) => async dispatch => {
+    try {
+        const res = await api.post(`/client/query`, { name });
+   
+        dispatch({
+            type: 'CLIENT_QUERY',
+            payload: res.data
+        })
+    } catch (err) {
+        console.log(err.message)
+        dispatch({
+            type: 'CLIENT_ERROR'
+        })
+        
+    }
+}
+
+// adicionar venda ao histórico do cliente
+export const addHistorySale = (client, sale) => async dispatch => {
+    try {
+        await api.post(`/client/history/${client._id}`, sale);
+   
+        dispatch({
+            type: 'CLIENT_ADD_HISTORY',
+        })
+    } catch (err) {
+        console.log(err.message)
+        dispatch({
+            type: 'CLIENT_ERROR'
+        })
+        
+    }
+}
+// pegar historico do client
+export const getClientHistory = (client_id) => async dispatch => {
+
+    try {
+        dispatch({
+            type: 'LOADING'
+        })
+        const res = await api.get(`/client/history/${client_id}`);
+      
+        dispatch({
+            type: 'CLIENT_GET_HISTORY',
+            payload: { history: res.data, client_id }
+        })
+    } catch (err) {
+        console.log(err.message)
+        dispatch({
+            type: 'STORAGE_ERROR'
+        })
+        
+    }
+}
+
+
+// remover historico de compra do cliente
+export const removeClientHistory = (client_id, history_id) => async dispatch => {
+    try {
+        dispatch({
+            type: 'CLIENT_REMOVE_HISTORY',
+            payload: { client_id, history_id }
+        })
+         await api.delete(`/client/history/${client_id}/${history_id}`);
+ 
+      
+    } catch (err) {
+        console.log(err.message)
+        dispatch({
+            type: 'STORAGE_ERROR'
+        })
+        
+    }
+}

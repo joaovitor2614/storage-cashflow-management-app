@@ -2,11 +2,21 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector  } from 'react-redux'
 import { getClientById, editClient } from '../../actions/client';
-import { Paper } from '../material-ui/material-ui'
+import { Paper, makeStyles, Grid } from '../material-ui/material-ui'
 import LoadingPage from '../LoadingPage';
 import ClientForm from './ClientForm'
 
+const useStyles = makeStyles((theme) => ({
+    paper: {
+       flexGrow: 1,
+       padding: theme.spacing(3),
+       marginTop: theme.spacing(4)
+  
+    }
+}))
+
 const EditClient = ({ match }) => {
+    const classes = useStyles()
     const history = useHistory();
     const dispatch = useDispatch();
     const clientState = useSelector(state => state.client);
@@ -24,13 +34,16 @@ const EditClient = ({ match }) => {
         return () => getData;
     }, [])
     return loading ? (<LoadingPage />) : (
-    <div>
-        <Paper elevation={2}>
-            <h3>Cadastrar cliente</h3>
-            <ClientForm edit={false} handleSubmit={handleSubmit} client={client}/>
+    <Grid container container alignItems='center' justify='center'>
+         <Grid item xs='auto'>
+            <Paper elevation={2} className={classes.paper}>
+                <h2>Editar dados do cliente</h2>
+                <ClientForm edit={true} handleSubmit={handleSubmit} client={client}/>
 
-        </Paper>
-    </div>
+            </Paper>
+         </Grid>
+        
+    </Grid>
     )
 }
 

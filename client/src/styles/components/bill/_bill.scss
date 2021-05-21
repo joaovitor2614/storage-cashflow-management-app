@@ -1,0 +1,76 @@
+
+
+.bills__list {
+    margin-top: 15px;
+    max-width: 700px;
+}
+
+.bill__list-item {
+    width: 650px;
+  border: 1px solid darken($color: #f7f7f7, $amount: 7);
+  border-top: none;
+  cursor: pointer;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 0;
+  text-decoration: none;
+  transition: background .3s ease;
+  
+
+}
+
+.bill__list-item-header {
+    background: #f7f7f7;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 1.4rem;
+    word-break: break-all;
+
+}
+
+.bill__list-item-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem 1.4rem;
+}
+
+
+.bill__list-item-info * {
+    font-weight: bold;
+}
+
+.bill__list-item-actions {
+    display: flex;
+    flex-direction: row;
+    padding: 0 1.4rem;
+    margin-left: auto;
+}
+
+.bill__list-item-actions * {
+    margin: 0 0.2rem;
+}
+
+.bill__list-item-dates {
+    display: flex;
+    flex-direction: row;
+    padding: 0.2rem 1.4rem;
+    vertical-align: bottom;
+    padding-bottom: 0;
+}
+
+.bill__list-item-dates * {
+    margin: 0 0.8rem;
+}
+
+.bill__list-item-edit {
+    margin-right: auto;
+}
+
+.bill__list-item-description {
+   
+    padding: 0 1.3rem;
+    font-weight: bold;
+}

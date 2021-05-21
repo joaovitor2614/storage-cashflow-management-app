@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { useHistory } from 'react-router-dom'
+
 import useClientsTable from '../../hooks/useClientsTable'
 // material-ui
 import { Paper, TableContainer, 
@@ -10,7 +10,7 @@ import OperationsBtn from './OperationsBtn'
 
 const useStyles = makeStyles({
         root: {
-            width: '1000px'
+            width: '1100px'
           
         },
         container: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     })
 
 const ClientTable = ({ clients, filters }) => {
-    const history = useHistory();
+
     const classes = useStyles()
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -34,10 +34,7 @@ const ClientTable = ({ clients, filters }) => {
         setRowsPerPage(+e.target.value);
         setPage(0);
     }
-    // redicionar para perfil do client
-    const handleProfile = (id) => {
-        history.push(`/profile/${id}`)
-    }
+    
     return (
         <Box width={"920px"} >
             <Paper elevation={1}>
@@ -56,8 +53,8 @@ const ClientTable = ({ clients, filters }) => {
                         <TableBody>
                             {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                                return (
-                                   <TableRow style={{ cursor: 'pointer' }} hover role="checkbox"
-                                   tabIndex={-1} key={row._id} onClick={() => handleProfile(row._id)}>
+                                   <TableRow  hover role="checkbox"
+                                   tabIndex={-1} key={row._id}>
                                        {columns.map((column) => {
                                            const value = row[column.id];
                                            return (

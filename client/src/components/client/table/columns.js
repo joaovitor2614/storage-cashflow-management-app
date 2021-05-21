@@ -7,7 +7,7 @@ const columns = [
     { id: 'phone', label: 'Telefone', align: 'center', minWidth: 70 },
     { id: 'address', label: 'Endereço',  minWidth: 140, align: 'center'},
     { id: 'operations', label: 'Operações', renderCell: OperationsBtn,
-     disableClickEventBubbling: true, align: 'right', minWidth: 90 },
+     disableClickEventBubbling: true, align: 'center', minWidth: 150 },
 ]
 
 

@@ -9,6 +9,7 @@ const Profile = ({ match }) => {
     const dispatch = useDispatch()
     const clientState = useSelector(state => state.client);
     const { client, loading, history } = clientState;
+   
     useEffect(() => {
         const getData = () => {
             dispatch(getClientById(match.params.id));
@@ -19,7 +20,9 @@ const Profile = ({ match }) => {
     return loading ? <LoadingPage /> : (
         <div className='profile'>
             <ProfileTop client={client} />
-            <ProfileHistory history={history} />
+            <ProfileHistory getClientHistory={getClientHistory} 
+            history={history} loading={loading}
+            />
         </div>
     )
 }

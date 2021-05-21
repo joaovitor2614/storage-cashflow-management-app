@@ -37,6 +37,22 @@ router.get('/', auth, async (req, res) => {
     }
 })
 
+//@method GET /api/client/history/:client_id
+//desc Pegar historico do cliente
+router.get('/history/:client_id', auth, async (req, res) => {
+    const { client_id } = req.params
+    try {
+         const client = await Client.findOne({ _id: client_id })
+         if (!client) {
+            res.json({ msg: 'Cliente não foi encontrado'});
+         }
+         res.json(client.history)
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).send('Server error')
+    }
+})
+
 //@method POST /api/client
 //desc Cadastrar clients
 router.post('/', auth, check('name', 'Nome é necessário').notEmpty(), async (req, res) => {
@@ -81,6 +97,75 @@ router.put('/:client_id', auth, async (req, res) => {
             res.json({ msg: 'Cliente não encontrado'});
          }
          res.json(client)
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).send('Server error')
+    }
+})
+
+//@method POST /api/client/history/:client_id
+//desc Adicionar compra ao historico do cliente
+router.post('/history/:client_id', auth, check('balance', 'Balanço total é necessário').notEmpty(),
+                check('products', 'Produtos da compra são necessários').notEmpty(), 
+   
+    async (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    const { client_id } = req.params
+    try {
+        const client = await Client.findOne({ _id: client_id });
+        if (!client) {
+            res.json({ msg: 'Cliente não encontrado'});
+         }
+        const newPurchase = {
+            ...req.body
+        }
+        client.history.unshift(newPurchase);
+        await client.save();
+        res.json(client.history[0])
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).send('Server error')
+    }
+})
+
+//@method DELETE /api/client/history/:client_id/:history_id
+//desc remover compra do historico do cliente
+router.delete('/history/:client_id/:history_id', auth, 
+   
+    async (req, res) => {
+
+    const { client_id, history_id } = req.params
+    try {
+        const client = await Client.findOne({ _id: client_id });
+        if (!client) {
+            res.json({ msg: 'Cliente não encontrado'});
+         }
+        const purchase = client.history.find(pc => pc.id === history_id);
+        if (!purchase) {
+            res.json({ msg: 'Compra não encontrada no histórico do cliente'});
+         }
+        client.history = client.history.filter(pc => pc.id !== history_id)
+        await client.save();
+        res.json({ msg: 'Compra removida com sucesso do histórico'})
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).send('Server error')
+    }
+})
+
+//@method POST /api/client/query
+//desc Query de clientes por nome
+router.post('/query', auth,  async (req, res) => {
+    const { name } = req.body
+    try {
+        const clients = await Client.find({ name: { $regex: `${name}`, $options: "g" }});
+        if (!clients) {
+            return res.status(400).json({ msg: 'Clientes não foram encontrados para esse nome'})
+        } 
+        res.json(clients)
     } catch (err) {
         console.log(err.message)
         res.status(500).send('Server error')

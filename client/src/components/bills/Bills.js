@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getBills } from '../../actions/bills'
+import { Grid } from '../material-ui/material-ui'
 import LoadingPage from '../LoadingPage'
+import BillList from './BillList'
 
 const Bills = () => {
     const dispatch = useDispatch();
@@ -11,9 +13,12 @@ const Bills = () => {
         dispatch(getBills())
     }, [])
     return loading ? (<LoadingPage />) : (
-        <div>
-            Bills
-        </div>
+        <Grid container container alignItems='center' justify='center'>
+            <Grid item xs='auto'>
+                <BillList bills={bills} />
+            </Grid>
+            
+        </Grid>
     )
 }
 

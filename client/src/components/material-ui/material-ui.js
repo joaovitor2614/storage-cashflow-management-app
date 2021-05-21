@@ -5,6 +5,10 @@ import Fade from '@material-ui/core/Fade';
 import EditIcon from '@material-ui/icons/Edit';
 import Box from '@material-ui/core/Box';
 import Modal from '@material-ui/core/Modal';
+import Popper from '@material-ui/core/Popper';
+import MenuList from '@material-ui/core/MenuList';
+import Grow from '@material-ui/core/Grow';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import CloseIcon from '@material-ui/icons/Close';
 import Backdrop from '@material-ui/core/Backdrop';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -39,6 +43,9 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import PostAddIcon from '@material-ui/icons/PostAdd';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import RestorePageIcon from '@material-ui/icons/RestorePage';
 
 export { Select, EditIcon, MenuItem, InputLabel, makeStyles, 
     Button, Paper, TextField, AttachMoneyIcon, SearchIcon,
@@ -47,4 +54,6 @@ FilterListRoundedIcon, Table, TableBody, TableCell,
 TableContainer, TableHead, TablePagination, TableRow, 
 DeleteIcon, Fade, Backdrop, Modal, CloseIcon, PeopleIcon,
 StorageIcon, AssessmentIcon, BusinessCenterIcon, ExitToAppIcon, 
-Box, Grid, PersonAddIcon, DashboardIcon, ReceiptIcon, PostAddIcon }
+Box, Grid, PersonAddIcon, DashboardIcon, ReceiptIcon, PostAddIcon,
+ArrowDownwardIcon, ArrowUpwardIcon, RestorePageIcon, 
+MenuList, Popper, ClickAwayListener, Grow }

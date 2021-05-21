@@ -22,7 +22,7 @@ const MyTextField = ({ label, id, type = '', placeholder, ...props }) => {
        <InputLabel htmlFor={id}>{label}</InputLabel>
        <TextField className={classes.input} {...field} type={type ? type : ''} 
        variant="outlined" id={id}  error={errorText !== '' ? true : false} 
-       helperText={errorText}  placeholder={placeholder} />
+       helperText={errorText}  placeholder={placeholder}  />
    </div>
    
   )

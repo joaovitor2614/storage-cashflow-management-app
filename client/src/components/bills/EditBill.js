@@ -23,7 +23,7 @@ const EditBill = ({ match }) => {
         getData();
         return () => getData;
     }, [])
-    return loading ? (<LoadingPage />) : (
+    return loading || bill.value === undefined ? (<LoadingPage />) : (
     <div>
         <Paper elevation={2}>
             <h3>Editar conta a pagar</h3>

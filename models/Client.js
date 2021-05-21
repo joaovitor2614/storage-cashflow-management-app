@@ -23,6 +23,12 @@ const ClientSchema = new mongoose.Schema({
                     product_id: String,
                    }
                 ],
+                paymentType: String,  
+                Date: {
+                    type: Date,
+                    default: Date.now,
+                },
+               
            
         }
         ],  

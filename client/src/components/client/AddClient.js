@@ -4,13 +4,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { addClient } from '../../actions/client';
 // material-ui
-import { Paper } from '../material-ui/material-ui'
+import { Paper, Grid , makeStyles } from '../material-ui/material-ui'
 // components
 import LoadingPage from '../LoadingPage'
 import ClientForm from './ClientForm';
 
+const useStyles = makeStyles((theme) => ({
+    paper: {
+       flexGrow: 1,
+       padding: theme.spacing(3),
+       marginTop: theme.spacing(4)
+  
+    }
+}))
+
 
 const AddClient = () => {
+    const classes = useStyles()
     const history = useHistory();
      const dispatch = useDispatch();
      const clientState = useSelector(state => state.client);
@@ -22,13 +32,16 @@ const AddClient = () => {
     }
     
     return (
-        <div>
-            <Paper elevation={2}>
-                <h3>Cadastrar cliente</h3>
-                <ClientForm edit={false} handleSubmit={handleSubmit}/>
+        <Grid container container alignItems='center' justify='center' >
+            <Grid item xs='auto'>
+                <Paper elevation={2} className={classes.paper}>
+                    <h2>Cadastrar cliente</h2>
+                    <ClientForm edit={false} handleSubmit={handleSubmit}/>
 
-            </Paper>
-        </div>
+                </Paper>
+            </Grid>
+          
+        </Grid>
     )
 }
 

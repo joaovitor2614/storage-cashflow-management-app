@@ -14,25 +14,25 @@ const SideBar = () => {
           history.push(`/${link}`)
     }
     const addClient = (
-        <Item classes='side-bar__item' onClick={() => handleLinks('add-client')} bgColor='black'>
+        <Item classes='side-bar__item-2' onClick={() => handleLinks('add-client')} bgColor='black'>
         <PersonAddIcon />
         Cadastrar cliente
     </Item>
     )
     const dashboardClient = (
-        <Item classes='side-bar__item' onClick={() => handleLinks('client')} bgColor='black'>
+        <Item classes='side-bar__item-2' onClick={() => handleLinks('client')} bgColor='black'>
             <DashboardIcon />
             Dashboard
         </Item>
     )
     const dashboardBill = (
-        <Item classes='side-bar__item' onClick={() => handleLinks('bills')} bgColor='black'>
+        <Item classes='side-bar__item-2' onClick={() => handleLinks('bills')} bgColor='black'>
             <DashboardIcon />
                 Dashboard
         </Item>
     )
     const addBill = (
-        <Item classes='side-bar__item' onClick={() => handleLinks('add-bill')} bgColor='black'>
+        <Item classes='side-bar__item-2' onClick={() => handleLinks('add-bill')} bgColor='black'>
              <PostAddIcon />
              Adicionar conta
         </Item>
@@ -54,17 +54,24 @@ const SideBar = () => {
                         <AssessmentIcon  />
                         Movimentação de caixa
                     </Item>
-                    <DropdownItem  
+                    <DropdownItem 
                     values={[dashboardBill, addBill]}
                     bgColor={'black'}>
-                         <ReceiptIcon />
-                            Contas
+                         <div className='side-bar__menu'>
+                            <ReceiptIcon />
+                       
+                            <p>Contas</p>
+                         </div>
+                         
                     </DropdownItem>
-                    <DropdownItem  
+                    <DropdownItem 
                     values={[dashboardClient, addClient]}
                     bgColor={'black'}>
-                         <PeopleIcon />
-                         Clientes
+                        <div className='side-bar__menu'>
+                            <PeopleIcon />
+                            <p>  Clientes</p>
+                        </div>
+                        
                     </DropdownItem>
                    
                     <Item classes='side-bar__item' onClick={() => dispatch({ type: 'LOGOUT' })}bgColor='black'>

@@ -73,7 +73,7 @@ const AppRouter = () => {
                     <PrivateRoute exact path="/update-client/:id" component={EditClient} />
                     <PrivateRoute exact path="/add-client"  component={AddClient} />
                     <PrivateRoute exact path="/storage-history" component={StorageHistory} />
-                    <PrivateRoute exact path="/profile/:id" component={Profile} />
+                    <PrivateRoute exact path="/history/:id" component={Profile} />
                     <PrivateRoute exact path="/bills" component={Bills} />
                     <PrivateRoute exact path="/add-bill" component={AddBill} />
                     <PrivateRoute exact path="/edit-bill/:id" component={EditBill} />

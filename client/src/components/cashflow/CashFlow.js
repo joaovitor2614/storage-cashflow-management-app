@@ -11,11 +11,13 @@ import CashFlowForm from './CashFlowForm';
 import { getTotalBalance } from './cash';
 import CashFlowPagination from './CashFlowPagination';
 import CashFlowCartPagination from './CashFlowCartPagination';
-
+import { findNameClient, addHistorySale } from '../../actions/client'
 
 
 const CashFlow = () => {
     const dispatch = useDispatch();
+    // clientes achados por procura
+    const clients = useSelector(state => state.client.clientsQuery)
     // items obtidos por procura
     const itemsFlow = useSelector(state => state.storage.itemsFlow);
     // items no carrinho
@@ -24,6 +26,10 @@ const CashFlow = () => {
     // função para procurar produtos na base de dados por nome
     const handleQuery = (e) => {
         dispatch(findNameItem(e.target.value));
+    }
+    // função para procurar clients na base de dados por nome
+    const handleClientQuery = (value) => {
+        dispatch(findNameClient(value));
     }
     // função para adicionar item ao carrinho
     const handleAdd = (item, units = '', kgs = '', isKg, perKg, perUnit) => {
@@ -50,9 +56,15 @@ const CashFlow = () => {
     const handleRemove = (id) => {
         dispatch(removeItemComercial(id))
     }
-    const handleAddSale = (products, balance, paymentType) => {
+    const handleAddSale = (products, balance, paymentType, 
+        selectedClient, setSelectedClient) => {
         console.log('handle sales')
         dispatch(addSale({ products, balance, paymentType }))
+        if (selectedClient !== null) {
+            dispatch(addHistorySale(selectedClient, { products, balance, paymentType}));
+            setSelectedClient(null);
+        }
+      
     }
     const balance = getTotalBalance(itemsCart)
    
@@ -75,10 +87,16 @@ const CashFlow = () => {
                 
                 </div>
                 <div className="cashflow-page__group-cart">
-                    <CashFlowCartPagination items={itemsCart} handleRemove={handleRemove} />
                     <span className="cashflow-page__group-cart-form">
-                        <CashFlowForm items={itemsCart} balance={balance} handleAddSale={handleAddSale}/>
+                        <CashFlowForm items={itemsCart} 
+                        balance={balance} 
+                        handleAddSale={handleAddSale}
+                        clients={clients}
+                        handleClientQuery={handleClientQuery}
+                        />
                     </span>
+                    <CashFlowCartPagination items={itemsCart} handleRemove={handleRemove} />
+                    
                     
                 </div>
                 
