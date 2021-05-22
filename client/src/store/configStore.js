@@ -9,6 +9,7 @@ import storageFilterReducer from '../reducers/storageFilter';
 import clientFilterReducer from '../reducers/clientFilter';
 import setAuthToken from '../utils/setAuthToken';
 import billsReducer from '../reducers/bills';
+import billsFilterReducer from '../reducers/billsFilter';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
@@ -21,7 +22,8 @@ const store = createStore(
             sales: salesReducer,
             client: clientReducer,
             clientFilter: clientFilterReducer,
-            bills: billsReducer
+            bills: billsReducer,
+            billsFilter: billsFilterReducer
        
         }),
         composeEnhancers(applyMiddleware(thunk))

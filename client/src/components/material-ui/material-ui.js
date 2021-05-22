@@ -27,6 +27,7 @@ import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import FilterListRoundedIcon from '@material-ui/icons/FilterListRounded';
 import Table from '@material-ui/core/Table';
+import Typography from '@material-ui/core/Typography';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -46,6 +47,8 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import RestorePageIcon from '@material-ui/icons/RestorePage';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
 export { Select, EditIcon, MenuItem, InputLabel, makeStyles, 
     Button, Paper, TextField, AttachMoneyIcon, SearchIcon,
@@ -56,4 +59,4 @@ DeleteIcon, Fade, Backdrop, Modal, CloseIcon, PeopleIcon,
 StorageIcon, AssessmentIcon, BusinessCenterIcon, ExitToAppIcon, 
 Box, Grid, PersonAddIcon, DashboardIcon, ReceiptIcon, PostAddIcon,
 ArrowDownwardIcon, ArrowUpwardIcon, RestorePageIcon, 
-MenuList, Popper, ClickAwayListener, Grow }
+MenuList, Popper, ClickAwayListener, Grow, Typography, KeyboardArrowDownIcon, KeyboardArrowUpIcon}

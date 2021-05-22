@@ -20,6 +20,7 @@ const EditClient = ({ match }) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const clientState = useSelector(state => state.client);
+    console.log('edit cliet', clientState)
     const { client, loading } = clientState
     const handleSubmit = (data, id='') => {
         dispatch(editClient(id, data))

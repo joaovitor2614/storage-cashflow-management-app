@@ -11,10 +11,10 @@ const ReceiptSchema = new mongoose.Schema({
             required: true,
         },
         editedAt: {
-            type: String
+            type: Date
         },
         forDate: {
-            type: String,
+            type: Date,
             required: true
         },
         Date: {

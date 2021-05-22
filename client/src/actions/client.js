@@ -12,7 +12,7 @@ export const getClientById = (id) => async dispatch => {
       
         dispatch({
             type: 'GET_CLIENT',
-            payload: { client: res.data }
+            payload: res.data
         })
     } catch (err) {
         console.log(err.message)
@@ -23,6 +23,26 @@ export const getClientById = (id) => async dispatch => {
     }
 }
 
+export const getClientByIdHistory = (id) => async dispatch => {
+    console.log('action id', id)
+    try {
+        dispatch({
+            type: 'LOADING'
+        })
+        const res = await api.get(`/client/${id}`);
+      
+        dispatch({
+            type: 'GET_CLIENT_HISTORY',
+            payload: res.data
+        })
+    } catch (err) {
+        console.log(err.message)
+        dispatch({
+            type: 'STORAGE_ERROR'
+        })
+        
+    }
+}
 
 // pegar todos os clients
 export const getClients = () => async dispatch => {
@@ -168,6 +188,7 @@ export const getClientHistory = (client_id) => async dispatch => {
 // remover historico de compra do cliente
 export const removeClientHistory = (client_id, history_id) => async dispatch => {
     try {
+        console.log('actonh istory id', history_id)
         dispatch({
             type: 'CLIENT_REMOVE_HISTORY',
             payload: { client_id, history_id }

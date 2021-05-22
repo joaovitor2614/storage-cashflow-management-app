@@ -4,7 +4,8 @@ const initialState = {
     loading: true,
     clients: [],
     clientsQuery: [],
-    client: {}
+    client: {},
+    clientHistory: {}
 }
 
 
@@ -15,16 +16,30 @@ const clientReducer = (state = initialState, action) => {
         case 'GET_CLIENTS':
             return {
                 ...state,
+                clients: [...payload.clients],
                 loading: false,
-                clients: [...payload.clients]
+               
             }
         case 'GET_CLIENT':
             return {
                 ...state,
-                loading: false,
                 client: {
-                    ...payload.client
-                }
+                   
+                    ...payload
+                },
+                loading: false,
+             
+            }
+        case 'GET_CLIENT_HISTORY':
+
+                return {
+                    ...state,
+                    clientHistory: {
+                       
+                        ...payload
+                    },
+                    loading: false,
+                 
             }
         
         
@@ -80,8 +95,7 @@ const clientReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 clients: state.clients.map(client => client._id === payload.client_id 
-                    ? { ...client, history: client.history
-                        .filter(sale => sale._id !== payload.history_id)} : client)
+                    ? { ...client, history: client.history.filter(sale => sale._id !== payload.history_id)} : client)
                 }
         case 'LOADING':
             return {
@@ -97,7 +111,8 @@ const clientReducer = (state = initialState, action) => {
             return {
                 loading: true,
                 clients: [],
-                client: {}
+                client: {},
+                clientHistory: {}
             }
         
          

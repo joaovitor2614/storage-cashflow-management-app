@@ -4,6 +4,9 @@ const auth = require('../../middlewares/auth')
 const { check, validationResult } = require('express-validator');
 const Sales = require('../../models/Sales');
 const router = express.Router();
+var calendar = require('dayjs/plugin/calendar')
+
+dayjs.extend(calendar)
 
 //@method POST /api/sales
 //desc Adicionar registro de venda
@@ -47,11 +50,14 @@ router.get('/', auth, async (req, res) => {
         let monthlySales = [];
         sales.forEach((sale) => {
             const soldDate = dayjs(sale.date);
-            const dayDate = dayjs(sale.date).get('day')
+            const dayDateCalendar = dayjs(sale.date).calendar('sameElse')
+            const dayDateCalendarJs = dayjs(new Date()).calendar('sameElse')
+   
             
-            if (dayDate == new Date().getDay() && soldDate.diff(dayjs(), 'month' === 0)) {
+            
+            if (dayDateCalendar === dayDateCalendarJs && soldDate.diff(dayjs(), 'month' === 0)) {
                
-                
+          
 
                 dailySales.push(sale)
                 monthlySales.push(sale);

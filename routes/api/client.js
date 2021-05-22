@@ -141,11 +141,11 @@ router.delete('/history/:client_id/:history_id', auth,
     try {
         const client = await Client.findOne({ _id: client_id });
         if (!client) {
-            res.json({ msg: 'Cliente não encontrado'});
+            return res.json({ msg: 'Cliente não encontrado'});
          }
         const purchase = client.history.find(pc => pc.id === history_id);
         if (!purchase) {
-            res.json({ msg: 'Compra não encontrada no histórico do cliente'});
+            return res.json({ msg: 'Compra não encontrada no histórico do cliente'});
          }
         client.history = client.history.filter(pc => pc.id !== history_id)
         await client.save();
