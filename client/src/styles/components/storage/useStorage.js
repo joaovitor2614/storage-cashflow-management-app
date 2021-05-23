@@ -27,13 +27,15 @@ export const useStorageModal = makeStyles((theme) => ({
     modal: {
         display: 'flex',
         justifyContent: 'center',
-        margin: '15px 0'
+        margin: '15px 0',
+       
     },
     paper: {
         display: 'flex',
         flexDirection: 'column',
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
+        heigh: '100%',
         padding: theme.spacing(2, 4, 3)
     },
     header: {

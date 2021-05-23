@@ -22,13 +22,13 @@ const Client = () => {
     return (
         <Grid container alignItems='center' justify='center' >
             <Grid item xs='auto'>
-                {clients.length > 0 ? (
+            
                     <>
                         
                         <ClientTop clients={clients} filters={filters} />
                         <ClientTable clients={clients} filters={filters} />
                     </>
-                ) : <LoadingPage />}
+                
             </Grid>
             
             
