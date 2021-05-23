@@ -13,7 +13,7 @@ const StorageHistoryDaily = ({ dailySales, dailyBalance }) => {
         <div className='storage-history__daily'>
             <div  className='storage-history__balance'>
                 <AttachMoneyIcon />
-                <h2>Balanço total do dia {numeral(dailyBalance).format('$0,0.00')}</h2>
+                <h2>Balanço total do dia <span>{numeral(dailyBalance).format('$0,0.00')}</span></h2>
              
             </div>
             <div className='storage-history__table'>

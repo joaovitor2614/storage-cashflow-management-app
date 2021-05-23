@@ -7,7 +7,7 @@ const createData = (balance, paymentType, productsAmount, date, products, histor
 
 
 const useHistoryTable = (history) => {
-   console.log('hook h', history)
+   
     const [rows, setRows] = useState([])
     useEffect(() => {
          const updateRows = (history, setRows) => {
@@ -26,7 +26,7 @@ const useHistoryTable = (history) => {
          updateRows(history, setRows);
          return () => updateRows;
     }, [history])
-    console.log('rows', rows)
+    
     return { rows }
 }
 

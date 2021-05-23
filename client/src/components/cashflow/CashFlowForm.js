@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 
 // material-ui
 import { Button, Paper, TextField, makeStyles, 
-    Select, MenuItem, AttachMoneyIcon, Grid } from '../material-ui/material-ui'
+    Select, MenuItem, AttachMoneyIcon, 
+    Grid, IconButton, HighlightOffIcon } from '../material-ui/material-ui'
 import numeral from 'numeral'
 // passando packages de formatação de numero pra portugues
 import { numeralConfig } from './numeral';
-import CashFlowClient from './CashFlowClient';
+import CashFlowModal from './CashFlowModal';
+
 numeralConfig();
 numeral.locale('br')
 
@@ -24,18 +26,29 @@ export const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         margin: theme.spacing(1)
-    }
+    },
+    Icon: {
+        color: theme.palette.primary.main,
+        fontSize: "27px !important",
+        [theme.breakpoints.down("xs")]: {
+          "& > *": {
+             margin: 0,
+           },
+        },
+    },
   
 })
 )
 
 const CashFlowForm = ({ handleAddSale, balance, items, handleClientQuery, clients }) => {
-    const classes = useStyles();
-    const [paymentType, setPaymentType] = useState('Método');
     const [selectedClient, setSelectedClient] = useState(null)
-    console.log('selecte client', selectedClient)
+    const classes = useStyles();
+    const [open, setOpen] = useState(false);
+    const [paymentType, setPaymentType] = useState('Método');
     const onPaymentType = (e) => setPaymentType(e.target.value)
     const [value, setValue] = useState('');
+    // fechar modal
+    const handleClose = () => setOpen(false)
     const handleChange = (e) => {
         const amount = e.target.value
         
@@ -44,7 +57,7 @@ const CashFlowForm = ({ handleAddSale, balance, items, handleClientQuery, client
           }
     }
     const handleSubmit = (e, products, balance) => {
-        console.log('hnalde s')
+       
         e.preventDefault();
         const newProducts = [];
         products.forEach((product) => {
@@ -82,12 +95,17 @@ const CashFlowForm = ({ handleAddSale, balance, items, handleClientQuery, client
                             <MenuItem value='PIX'>PIX</MenuItem>
                             <MenuItem value='Outros'>Outros</MenuItem>
                         </Select>
-                        {selectedClient !== null && <h5>Cliente: {selectedClient.name}</h5>}
+                
                         <Button size="small" variant="contained" color="primary" type="submit"
                         disabled={value === '' || !items.length > 1 ? true : false 
-                        || paymentType === 'Método de pagamento'}>
+                        || paymentType === 'Método'}>
                             Finalizar
                         </Button>
+                        <button type='button' className='button button--primary' 
+                        onClick={() => setOpen(true)}>
+                            Cliente
+                        </button>
+                       
                     </form>
                 </Paper>
             </Grid>
@@ -99,12 +117,19 @@ const CashFlowForm = ({ handleAddSale, balance, items, handleClientQuery, client
                         Troco: {value !== '' ? numeral(value - balance).format('$0,0.00') 
                         : numeral(0).format('$0,0.00')}
                     </h5>
-                    <CashFlowClient clients={clients} handleClientQuery={handleClientQuery} 
-                    setSelectedClient={setSelectedClient} />
+                    {selectedClient !== null 
+                    ? <h5>Cliente selecionado: {selectedClient.name}</h5>
+                    : <h5>Cliente selecionado: Nenhum</h5>}
+                   
                         
                 </Paper>
        
             </Grid>
+            <CashFlowModal handeClose={handleClose} 
+            setOpen={setOpen} open={open} 
+            handleClientQuery={handleClientQuery}
+            clients={clients} setSelectedClient={setSelectedClient}
+            />
            
         </Grid>
         

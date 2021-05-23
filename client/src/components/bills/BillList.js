@@ -11,9 +11,9 @@ const BillList = ({ bills, filters }) => {
     }
     // logica paginação
     const [pageNumber, setPageNumber] = useState(0);
-    const dataPerPage = 4;
+    const dataPerPage = 3;
     const itemsVisited = pageNumber * dataPerPage;
-    console.log('filters on list')
+    
     let filteredBills = selectBills(bills, filters)
     const displayPages = filteredBills.length > 0
     && filteredBills.slice(itemsVisited, itemsVisited + dataPerPage)

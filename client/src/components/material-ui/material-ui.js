@@ -49,6 +49,8 @@ import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import RestorePageIcon from '@material-ui/icons/RestorePage';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import TimelineIcon from '@material-ui/icons/Timeline';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 export { Select, EditIcon, MenuItem, InputLabel, makeStyles, 
     Button, Paper, TextField, AttachMoneyIcon, SearchIcon,
@@ -59,4 +61,5 @@ DeleteIcon, Fade, Backdrop, Modal, CloseIcon, PeopleIcon,
 StorageIcon, AssessmentIcon, BusinessCenterIcon, ExitToAppIcon, 
 Box, Grid, PersonAddIcon, DashboardIcon, ReceiptIcon, PostAddIcon,
 ArrowDownwardIcon, ArrowUpwardIcon, RestorePageIcon, 
-MenuList, Popper, ClickAwayListener, Grow, Typography, KeyboardArrowDownIcon, KeyboardArrowUpIcon}
+MenuList, Popper, ClickAwayListener, Grow, Typography, 
+KeyboardArrowDownIcon, KeyboardArrowUpIcon, TimelineIcon, HighlightOffIcon }

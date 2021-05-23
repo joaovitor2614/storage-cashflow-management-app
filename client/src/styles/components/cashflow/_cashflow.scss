@@ -57,7 +57,7 @@
 .cashflow-page__group-cart-form {
     display: flex;
    flex-direction: row;
-   margin-bottom: 70px;
+   margin-bottom: 4px;
 }
 
 
@@ -85,6 +85,16 @@
 
 .cashflow-page__group-cart-form__box-content * {
    margin: 0 1.2rem
+}
+
+.cashflow-page__group-cart-form__box-content-utils {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+}
+
+.cashflow-page__group-cart-form__box-content-utils * {
+   margin: 0 0.8rem
 }
 
 .cashflow-page__group-cart-form__box-content2 {
@@ -227,3 +237,13 @@
 .cashflow-page__group-list__item-actions > * {
     margin: 0.2rem 0;
 }
+
+.cashflow-page__client {
+    cursor: pointer;
+    transition: background .3s ease;
+    border-bottom: 1px solid black;
+    &:hover {
+        background:#f7f7f7;
+    }
+}
+

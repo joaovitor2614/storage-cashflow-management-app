@@ -26,8 +26,8 @@ export const useStorageModal = makeStyles((theme) => ({
    
     modal: {
         display: 'flex',
-        alignItems: 'center',
         justifyContent: 'center',
+        margin: '15px 0'
     },
     paper: {
         display: 'flex',
@@ -42,6 +42,9 @@ export const useStorageModal = makeStyles((theme) => ({
         justifyContent: 'space-between',
         borderBottom: '1px solid gray'
     },
+    input: {
+        input: '28rem'
+    }
     
 })
 )

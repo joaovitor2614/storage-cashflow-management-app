@@ -1,51 +1,97 @@
+
 import React, { useState, Fragment } from 'react';
 import { useDispatch } from 'react-redux'
-import { editSale, removeSale } from '../../actions/sales';
+import { removeSale } from '../../actions/sales';
 import useDataTableDaily from '../hooks/useDataTableDaily'
 import { DeleteIcon, IconButton, Table, TableCell, TableBody, TableContainer, TableHead,
-TablePagination, TableRow, Paper, makeStyles } from '../material-ui/material-ui';
-import StorageModal from './StorageModal';
+TablePagination, TableRow, Paper, makeStyles, 
+ Typography, Box, Collapse, 
+KeyboardArrowDownIcon, KeyboardArrowUpIcon } from '../material-ui/material-ui';
 
-const RenderDeleteButton = ({ handleRemove, id }) => {
-   return (
-    <strong>
-        <IconButton onClick={() => {handleRemove(id)}}>
-            <DeleteIcon />
-        </IconButton>
-    </strong>
-)
+import numeral from 'numeral'
 
-} 
 
-const columns = [
-    { id: 'name', label: 'Produto', align: 'left', minWidth: 150 },
-    { id: 'units', label: 'Unidades', minWidth: 70, align: 'center' },
-    { id: 'paymentType', label: 'Método', minWidth: 100, align: 'center' },
-    { id: 'kgs', label: 'Quilo', minWidth: 70, align: 'center' },
-    { id: 'date', label: 'Data/Hora', align: 'center', minWidth: 100 },
-    { id: 'operation', label: 'Operação', renderCell: RenderDeleteButton,
-     disableClickEventBubbling: true, align: 'right', minWidth: 70 },
-]
 
-const useStyles = makeStyles({
+
+
+
+const useRowStyles = makeStyles({
     root: {
-        borderRadius: '30px',
-        width: '770px',
-      
-        wordBreak: 'break-all'
-      
+      '& > *': {
+        borderBottom: 'unset',
+      },
     },
-    table: {
-        borderRadius: '30px',
-    }
+  });
+
+  const Row = (props) => {
+      const dispatch = useDispatch()
+    const { row } = props;
+    const [open, setOpen] = useState(false);
+    const classes = useRowStyles();
   
-    
-})
+    return (
+        <>
+            <TableRow className={classes.row}>
+                <TableCell>
+                    <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
+                        {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                    </IconButton>
+                </TableCell>
+                <TableCell component='th' scope='row'>
+                    {numeral(parseFloat(row.balance, 10)).format('$0,0.00')}
+                </TableCell>
+                <TableCell align="right">{row.paymentType}</TableCell>
+                <TableCell align="center">{row.productsAmount}</TableCell>
+                <TableCell align="right">{row.date}</TableCell>
+                <TableCell align="right">
+                    <IconButton onClick={() => dispatch(removeSale(row._id))}>
+                        <DeleteIcon />
+                    </IconButton>
+                </TableCell>
+               
+                
+            </TableRow>
+            <TableRow>
+                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+                    <Collapse in={open} timeout="auto" unmountOnExit>
+                        <Box margin={1}>
+                            <Typography variant="h6" gutterBottom component="div">
+                                Produtos
+                            </Typography>
+                            <Table size="small" aria-label="purchases">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Produto</TableCell>
+                                        <TableCell>Unidade</TableCell>
+                                        <TableCell align="right">Quilograma</TableCell>
+                                
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {row.products.map((product) => (
+                                        <TableRow key={product._id}>
+                                            <TableCell component="th" scope="row">
+                                                {product.name}
+                                            </TableCell>
 
-const StorageHistoryTable = ({ itemSales, type, }) => {
- 
+                                            <TableCell align="center">{product.units}</TableCell>
+                                            <TableCell align="center">{product.kgs}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </Box>
+                    </Collapse>
 
-    const classes = useStyles();
+                    
+                </TableCell>
+            </TableRow>
+        </>
+    )
+}
+
+const StorageHistoryTable = ({ itemSales, type }) => {
+
     const dispatch = useDispatch()
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(9);
@@ -65,65 +111,41 @@ const StorageHistoryTable = ({ itemSales, type, }) => {
     }
  
 
-    return ( 
-            <Paper className={classes.root}>
-                            <TableContainer className={classes.table}>
-                            <Table stickyHeader aria-label='sticky table'>
-                                <TableHead>
-                                    <TableRow>
-                                        {columns.map((column) => (
-                                                <TableCell
-                                                key={column.id}
-                                                align={column.align}
-                                                style={{ minWidth: column.minWidth }}
-                                                >
-                                                    {column.label}
-                                                    
-                                                </TableCell>
-                                                
-                                            ))}
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                                            
-                                            return (
-                                                <TableRow 
-                                                hover role="checkbox" 
-                                                tabIndex={-1} key={row._id}
-                                              
-                                
-                                                >
-                                                    {columns.map((column) => {
-                                                        const value = row[column.id];
-                                                        return (
-                                                            <TableCell key={column.id} align={column.align}>
-                                                                {column.format && typeof value === 'number' ? column.format(value) : value}
-                                                                {column.renderCell && <RenderDeleteButton handleRemove={handleRemove} id={row._id} />}
-                                                            </TableCell>
-                                                            
-                                                        );
-                                                    })}
-                                                </TableRow>
-                                            )
-                                        })}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
-                        <TablePagination
-                            rowsPerPageOptions={[9, 5]}
-                            component="div"
-                            count={rows.length}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            onChangePage={handleChangePage}
-                            onChangeRowsPerPage={handleChangeRowsPerPage}>
-                        </TablePagination>
-                     
+ 
+    return (
+        <>
+            <TableContainer component={Paper}>
+                <Table aria-label="collapsible table">
+                <TableHead>
+                <TableRow>
+                    <TableCell />
+                    <TableCell>Valor</TableCell>
+                    <TableCell align="right">Método</TableCell>
+                    <TableCell align="right">Número de produtos</TableCell>
+                    <TableCell align="center">Data</TableCell>
+                    <TableCell align="center">Operação</TableCell>
+                </TableRow>
+                </TableHead>
+                <TableBody>
+                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
+                    <Row key={row._id} row={row} />
+                ))}
+                </TableBody>
+            </Table>
+            </TableContainer>
+            <Paper>
+            <TablePagination
+                                rowsPerPageOptions={[9, 11, 15, 20, 30]}
+                                component="div"
+                                count={rows.length}
+                                rowsPerPage={rowsPerPage}
+                                page={page}
+                                onChangePage={handleChangePage}
+                                onChangeRowsPerPage={handleChangeRowsPerPage}>
+            </TablePagination>
             </Paper>
            
-         
-
+        </>
     )
 }
 export default StorageHistoryTable

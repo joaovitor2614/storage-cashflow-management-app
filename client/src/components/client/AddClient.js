@@ -35,7 +35,12 @@ const AddClient = () => {
         <Grid container container alignItems='center' justify='center' >
             <Grid item xs='auto'>
                 <Paper elevation={2} className={classes.paper}>
-                    <h2>Cadastrar cliente</h2>
+                 
+                 
+                    <div style={{ textAlign: 'center'}}>
+                        <h2>Cadastrar cliente</h2>
+                        <h5>ou</h5>
+                    </div>
                     <ClientForm edit={false} handleSubmit={handleSubmit}/>
 
                 </Paper>

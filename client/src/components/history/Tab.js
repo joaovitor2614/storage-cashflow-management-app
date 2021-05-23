@@ -5,8 +5,13 @@ const useStyles = makeStyles((theme) => ({
     root: {
         
         padding: '15px',
-        width: '35rem',
-        height: '48rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        backgroundColor: '#2d333b',
+        maxWidth: '69rem',
+        height: '100%'
+
  
     }
 }))

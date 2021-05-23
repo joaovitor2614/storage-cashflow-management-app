@@ -25,7 +25,7 @@ const ClientTable = ({ clients, filters }) => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const { rows } = useClientsTable(clients, filters);
-    console.log('rows in table,', rows)
+    
     // pagination logic...
     const handleChangePage = (e, newPage) => {
         setPage(newPage)

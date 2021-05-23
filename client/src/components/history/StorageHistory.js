@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
    panel: {
 
     width: '69rem',
-    height: '985px'
+    height: '100%px'
    },
    tab: {
     display: 'flex',

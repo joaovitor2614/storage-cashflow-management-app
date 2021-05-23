@@ -7,10 +7,9 @@ import { getClientById } from '../../../actions/client'
 
 const Profile = ({ match }) => {
     const dispatch = useDispatch();
-    const clientState = useSelector(state => state.client);
-    const { client, loading } = clientState
-    console.log('client profile', client)
-    console.log('client  state profile', clientState)
+    const historyState = useSelector(state => state.history);
+    const { history, loading } = historyState
+  
    useEffect(() => {
     const getData = () => {
         dispatch(getClientById(match.params.id));
@@ -20,8 +19,8 @@ const Profile = ({ match }) => {
 }, [])
     return loading ? (<LoadingPage />) : (
         <div className='profile'>
-            <ProfileTop client={client}  />
-            <ProfileHistory client={client} loading={loading}
+            <ProfileTop client={history}  />
+            <ProfileHistory client={history} loading={loading}
             
             />
         </div>

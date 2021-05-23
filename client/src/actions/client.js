@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 // pegar todos os clients
 export const getClientById = (id) => async dispatch => {
-    console.log('action id', id)
+  
     try {
         dispatch({
             type: 'LOADING'
@@ -24,7 +24,7 @@ export const getClientById = (id) => async dispatch => {
 }
 
 export const getClientByIdHistory = (id) => async dispatch => {
-    console.log('action id', id)
+   
     try {
         dispatch({
             type: 'LOADING'
@@ -67,7 +67,7 @@ export const getClients = () => async dispatch => {
 export const addClient = (data) => async dispatch => {
     try {
         const res = await api.post('/client', data);
-       console.log('client res data', res.data)
+      
         dispatch({
             type: 'ADD_CLIENT',
             payload: res.data
@@ -188,7 +188,7 @@ export const getClientHistory = (client_id) => async dispatch => {
 // remover historico de compra do cliente
 export const removeClientHistory = (client_id, history_id) => async dispatch => {
     try {
-        console.log('actonh istory id', history_id)
+        
         dispatch({
             type: 'CLIENT_REMOVE_HISTORY',
             payload: { client_id, history_id }

@@ -4,12 +4,12 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import numeral from 'numeral'
 
 const StorageHistoryMonthly = ({ monthlySales, monthlyBalance}) => {
-    console.log('month', monthlySales)
+   
     return (
         <div className='storage-history__monthly'>
             <div  className='storage-history__balance'>
                 <AttachMoneyIcon />
-                <h2>Balanço total do mês {numeral(monthlyBalance).format('$0,0.00')}</h2>
+                <h2>Balanço total do mês <span>{numeral(monthlyBalance).format('$0,0.00')}</span></h2>
           
             </div>
              <div className='storage-history__table'>

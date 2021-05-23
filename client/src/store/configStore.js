@@ -10,6 +10,7 @@ import clientFilterReducer from '../reducers/clientFilter';
 import setAuthToken from '../utils/setAuthToken';
 import billsReducer from '../reducers/bills';
 import billsFilterReducer from '../reducers/billsFilter';
+import historyReducer from '../reducers/history';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
@@ -23,7 +24,8 @@ const store = createStore(
             client: clientReducer,
             clientFilter: clientFilterReducer,
             bills: billsReducer,
-            billsFilter: billsFilterReducer
+            billsFilter: billsFilterReducer,
+            history: historyReducer
        
         }),
         composeEnhancers(applyMiddleware(thunk))

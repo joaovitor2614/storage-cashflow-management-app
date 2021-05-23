@@ -38,7 +38,7 @@ const BillsForm = ({ edit, handleSubmit, bill=''}) => {
                     validateOnChange={true}
                     initialValues={{
                         value: bill ? getPrice(bill.value) : '',
-                        forDate: bill ? dayjs(bill.forDate, 'YYYY-MM-DD') : '',
+                        forDate: bill ? bill.forDate : '',
                         description: bill ? bill.description : '',
                         editedAt: bill ? bill.editedAt : '',
                     }}

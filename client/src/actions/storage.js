@@ -115,7 +115,7 @@ export const updateItemComercial = (item) => {
           if (currentState.some(itemComercial => itemComercial._id === item._id)) {
               dispatch(editItemComercial(item))
           } else {
-              console.log('here 2')
+             
              dispatch(addItemComercial(item))
           }
       

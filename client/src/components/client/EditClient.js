@@ -38,7 +38,10 @@ const EditClient = ({ match }) => {
     <Grid container container alignItems='center' justify='center'>
          <Grid item xs='auto'>
             <Paper elevation={2} className={classes.paper}>
-                <h2>Editar dados do cliente</h2>
+                    <div style={{ textAlign: 'center'}}>
+                        <h2>Editar dados do cliente</h2>
+                        <h5>ou</h5>
+                    </div>
                 <ClientForm edit={true} handleSubmit={handleSubmit} client={client}/>
 
             </Paper>

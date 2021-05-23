@@ -57,10 +57,10 @@ const CashFlow = () => {
         dispatch(removeItemComercial(id))
     }
     const handleAddSale = (products, balance, paymentType, 
-        selectedClient, setSelectedClient) => {
-        console.log('handle sales')
+       selectedClient, setSelectedClient) => {
+        
         dispatch(addSale({ products, balance, paymentType }))
-        if (selectedClient !== null) {
+      if (selectedClient !== null) {
             dispatch(addHistorySale(selectedClient, { products, balance, paymentType}));
             setSelectedClient(null);
         }

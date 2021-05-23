@@ -1,90 +1,40 @@
+import React, { useState } from 'react'
+import ReactPaginate from 'react-paginate'
 
-import React, { useState, useRef, useEffect } from 'react'
-import { Button, TextField, Popper, ClickAwayListener, 
-    MenuList, MenuItem, Paper, Grow, SearchIcon, InputAdornment } from '../material-ui/material-ui'
+const CashFlowClient = ({ clients, handleClient }) => {
+    const [pageNumber, setPageNumber] = useState(0);
 
-const CashFlowClient = ({ clients, handleClientQuery, setSelectedClient }) => {
-    const [value, setValue] = useState('')
-    const [open, setOpen] = useState(false);
-  const anchorRef = useRef(null);
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-}
-    const handlelistKeyDown = (event) => {
-        if (event.key === 'Tab') {
-            event.preventDefault();
-            setOpen(false)
-        }
-    }
-    const handleSelect = (selected) => {
-        setSelectedClient({ ...selected })
-        setOpen(false)
-    }
-    const prevOpen = useRef(open);
-    useEffect(() => {
-        
-        if (prevOpen.current === true && open === false) {
-            anchorRef.current.focus();
-        }
-        const trackClients = () => {
-            prevOpen.current = open;
-            handleClientQuery(value)
-            if (value === '') {
-                setOpen(false)
-            }
-            if (clients.length > 0) {
-                setOpen(true)
-            }
-            if (!clients.length > 0) {
-                setOpen(false)
-            }
-        }
-        trackClients();
-        return () => trackClients;
-
-    }, [open, setOpen, value])
+    const dataPerPage = 6;
+    const itemsVisited = pageNumber * dataPerPage;
+    const displayPages = clients.length > 0
+    ? clients.slice(itemsVisited, itemsVisited + dataPerPage)
+    .map((client) => {
+        return (
+        <div key={client._id} className="cashflow-page__client" onClick={() => handleClient(client)}>
+             <h5>{client.name}</h5>
+          </div>
+        )
+    }) : (<h5>Sem clientes encontrados para esse nome</h5>)
+    const pageCount = Math.ceil(clients.length / dataPerPage)
+    // mudar pagina
+    const changePage = ({ selected }) =>   setPageNumber(selected);
+      
+    
     return (
-        <div>
-            <TextField ref={anchorRef} 
-            aria-controls={open ? 'menu-list-grow' : undefined}
-            placeholder='Procurar cliente...'
-            aria-haspopup="true"
-            value={value}
-                onChange={(e) => setValue(e.target.value)}
-                InputProps={{
-                    endAdornment: 
-                    <InputAdornment position="end">
-                <SearchIcon></SearchIcon></InputAdornment>
-                }}
-            />
-            <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-              {({ TransitionProps, placement }) => (
-                  <Grow  {...TransitionProps}   
-                  style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}>
-                      <Paper>
-                      <ClickAwayListener onClickAway={handleClose}>
-                          <MenuList autoFocusItem={open} id="menu-list-grow" 
-                          onKeyDown={handlelistKeyDown}>
-                                {clients.length > 0 && clients.map((client) => (
-                                    <MenuItem onClick={() => handleSelect(client)} 
-                                    key={client._id}>
-                                        {client.name}
-                                    </MenuItem>
-                                ))}
-                             
-                          </MenuList>
-                      </ClickAwayListener>
-                      </Paper>
-                  </Grow>
-              )}
-            </Popper>
-        </div>
+       <div className="cashflow-page__client-list">
+          {displayPages}
+          <ReactPaginate 
+              previousLabel={"Anterior"}
+              nextLabel={"Próximo"}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              containerClassName={"paginationBtns"}
+              previousLinkClassName={"previousBtn"}
+              nextLinkClassName={"nextBtn"}
+              disabledClassName={"paginationDisabled"}
+              activeClassName={"paginationActive"}
+        />
+       </div>
     )
 }
 

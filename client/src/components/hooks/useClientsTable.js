@@ -20,7 +20,7 @@ const useClientsTable = (clients, filters) => {
          updateRows(clients, setRows);
          return () => updateRows;
     }, [clients, filters])
-    console.log('rows', rows)
+   
     return { rows }
 }
 
