@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { green } from '@material-ui/core/colors';
 import numeral from 'numeral'
 import dayjs from 'dayjs'
 
-import { ArrowDownwardIcon, ArrowUpwardIcon, Collapse, DeleteIcon, EditIcon, IconButton } from '../material-ui/material-ui'
-const BillItem = ({ bill, handleRemove }) => {
+import { ArrowDownwardIcon, ArrowUpwardIcon, CheckIcon, Collapse, DeleteIcon, EditIcon, IconButton } from '../material-ui/material-ui'
+const BillItem = ({ bill, handleRemove, handlePayBill }) => {
     const history = useHistory();
     const [open, setOpen] = useState(false)
     const editedAt = (
@@ -12,6 +13,11 @@ const BillItem = ({ bill, handleRemove }) => {
         {bill.editedAt && <small>Editado em {dayjs(bill.editedAt).format('L')}</small>}
         </div>
         )
+        const paidAt = (
+            <div className='bill__list-item-edit'>
+            {bill.paidAt && <small>Pago em {dayjs(bill.paidAt).format('L')}</small>}
+            </div>
+            )
     // redicionar para pag de editar
     const handleRedirect = () => {
         history.push(`/edit-bill/${bill._id}`)
@@ -28,17 +34,36 @@ const BillItem = ({ bill, handleRemove }) => {
                
             </div>
             <div className='bill__list-item-actions'>
-                <IconButton onClick={() => handleRedirect()}>
-                     <EditIcon />
-                </IconButton>
-                <IconButton onClick={() => handleRemove(bill._id)}>
+                {bill.isPaid === true ? (
+                        <div className='row'>
+                            <CheckIcon style={{ color: green[500] }} />
+                            <p>Paga</p>
+                        </div>
+                        
+                    ) : (
+                        <div className='row'>
+                            <button 
+                            onClick={() => handlePayBill(bill._id, bill)}
+                            className='button button--primary'>
+                                Registrar como pago
+                            </button>
+                        </div>
+                    )}
+               
+                {bill.isPaid === false && (
+                     <IconButton onClick={() => handleRedirect()}>
+                        <EditIcon />
+                     </IconButton>
+                )}
+                <IconButton onClick={() => handleRemove(bill._id, bill.isPaid)}>
                      <DeleteIcon />
                 </IconButton>
-               
+                
             </div>
             <div className='bill__list-item-dates'>
                 <small>Criado em {dayjs(bill.Date).format('L')}</small>
                 {editedAt}
+                {paidAt}
                 <IconButton onClick={() => setOpen(!open)}>
                     {open ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
                 </IconButton>

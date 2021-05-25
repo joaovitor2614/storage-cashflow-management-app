@@ -17,6 +17,13 @@ const ReceiptSchema = new mongoose.Schema({
             type: String,
             required: true
         },
+        paidAt: {
+            type: String
+        },
+        isPaid: {
+            type: Boolean,
+            default: false
+        },
         Date: {
             type: Date,
             default: Date.now,

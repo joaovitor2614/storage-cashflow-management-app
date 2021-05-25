@@ -41,6 +41,8 @@ const BillsForm = ({ edit, handleSubmit, bill=''}) => {
                         forDate: bill ? bill.forDate : '',
                         description: bill ? bill.description : '',
                         editedAt: bill ? bill.editedAt : '',
+                        paidAt: bill ? bill.paidAt : '',
+                        isPaid: bill ? bill.isPaid : false
                     }}
                     validationSchema={billsSchema}
                     onSubmit={(values, { setSubmitting}) => {

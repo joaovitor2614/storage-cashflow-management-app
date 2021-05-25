@@ -28,6 +28,7 @@ const useDataTable = (items, filters) => {
                 let data = createData(item.name, item.category, item.weight, `R$${item.pricePerUnit}`, 
                     item.storageAmount, `${numeral(priceKg).format('$0,0.00')}`, `${numeral(priceUnit).format('$0,0.00')}`, item.validity, 
                     `${item.profitUnit}%`, `${item.profitKg ? `${item.profitKg}%` : ''}`, item._id);
+                   
                 products.unshift(data)
                 
             });

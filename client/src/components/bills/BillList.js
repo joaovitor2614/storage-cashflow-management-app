@@ -1,13 +1,14 @@
 import React, { useState} from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import BillItem from './BillItem'
 import ReactPaginate from 'react-paginate'
 import selectBills from '../../selectors/bills'
 import { removeBill } from '../../actions/bills';
-const BillList = ({ bills, filters }) => {
+const BillList = ({ bills, handlePayBill='' }) => {
+    const filters = useSelector(state => state.billsFilter)
     const dispatch = useDispatch();
-    const handleRemove = (id) => {
-        dispatch(removeBill(id))
+    const handleRemove = (id, isPaid) => {
+        dispatch(removeBill(id, isPaid))
     }
     // logica paginação
     const [pageNumber, setPageNumber] = useState(0);
@@ -20,7 +21,7 @@ const BillList = ({ bills, filters }) => {
     .map((bill) => {
         return (
         <div className='bills__list' key={bill._id}>
-            <BillItem handleRemove={handleRemove} bill={bill} />
+            <BillItem handleRemove={handleRemove} bill={bill} handlePayBill={handlePayBill} />
         </div>
         )
     }) : (

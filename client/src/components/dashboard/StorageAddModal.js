@@ -42,10 +42,12 @@ const StorageAddModal = ({ open, handleClose, handleSubmit, data = '', handleRem
                         </div>
                         <small>* = Campos obrigatórios / Caso ração, especifique peso e porcentagem de lucro por kg</small>
                         <div>
-                            <StorageAddForm data={data} handleSubmit={handleSubmit} handleClose={handleClose} />
+                            <StorageAddForm data={data} handleSubmit={handleSubmit} 
+                            handleClose={handleClose} 
+                            handleRemove={handleRemove}
+                            />
                             
-                            {data !== '' ? <button className='button button--remove button--mt' 
-                            onClick={() => handleRemove(data.id)}>Excluir item</button> : ''}
+                            
                         </div>
                     </div>
                  

@@ -5,7 +5,8 @@ import { Select, MenuItem, InputLabel, makeStyles } from '../material-ui/materia
 
 export const useStyles = makeStyles(() => ({
     input: {
-      width: '17rem'
+      width: '17rem',
+      
     }
   
 })

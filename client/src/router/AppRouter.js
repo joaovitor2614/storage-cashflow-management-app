@@ -20,6 +20,7 @@ import Profile from '../components/client/profile/Profile';
 import Bills from '../components/bills/Bills';
 import AddBill from '../components/bills/AddBill';
 import EditBill from '../components/bills/EditBill';
+import BillHistory from '../components/bills/BillHistory';
 
 
 
@@ -75,6 +76,7 @@ const AppRouter = () => {
                     <PrivateRoute exact path="/storage-history" component={StorageHistory} />
                     <PrivateRoute exact path="/history/:id" component={Profile} />
                     <PrivateRoute exact path="/bills" component={Bills} />
+                    <PrivateRoute exact path="/bills-history" component={BillHistory} />
                     <PrivateRoute exact path="/add-bill" component={AddBill} />
                     <PrivateRoute exact path="/edit-bill/:id" component={EditBill} />
                 </Switch >

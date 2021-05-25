@@ -24,7 +24,12 @@ const EditBill = ({ match }) => {
     const { bill, loading } = billsState
     const handleSubmit = (data, id='') => {
         dispatch(editBill(id, data))
-        history.push('/bills')
+        if (data.isPaid === false) {
+            history.push('/bills')
+        } else if (data.isPaid === true) {
+            history.push('/bills-history')
+        }
+       
         
     }
     useEffect(() => {

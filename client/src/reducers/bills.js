@@ -3,6 +3,7 @@
 const initialState = {
     loading: true,
     bills: [],
+    history: [],
     bill: {}
 }
 
@@ -15,7 +16,9 @@ const billsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                bills: [...payload.bills]
+                bills: [...payload.notPaid],
+                history: [...payload.paid],
+           
             }
         case 'GET_BILL':
             return {
@@ -33,11 +36,25 @@ const billsReducer = (state = initialState, action) => {
             loading: false,
             bills: [payload, ...state.bills]
            }
+      
         case 'REMOVE_BILL': 
           return {
               ...state,
               loading: false,
               bills: state.bills.filter((bill) => bill._id !== payload.id)
+          }
+        case 'REMOVE_BILL_HISTORY': 
+          return {
+              ...state,
+              loading: false,
+              history: state.history.filter((bill) => bill._id !== payload.id)
+          }
+        case 'PAY_BILL': 
+          return {
+              ...state,
+              loading: false,
+              bills: state.bills.filter((bill) => bill._id !== payload.id),
+              history: [payload.bill, ...state.history]
           }
         case 'EDIT_BILL':
             return {
@@ -47,6 +64,14 @@ const billsReducer = (state = initialState, action) => {
                     ? { ...payload.bill } 
                     : bill)
             }
+        case 'EDIT_BILL_HISTORY':
+                return {
+                    ...state,
+                    loading: false,
+                    history: state.history.map(bill => bill._id === payload.id 
+                        ? { ...payload.bill } 
+                        : bill)
+                }
         case 'LOADING_BILL':
             return {
                 ...state,
@@ -57,7 +82,8 @@ const billsReducer = (state = initialState, action) => {
             return {
                 loading: true,
                 bills: [],
-                bill: {}
+                bill: {},
+                history: []
             }
         
          

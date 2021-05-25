@@ -1,15 +1,15 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { filterBillDcp, filterBillClear } from '../../actions/billsFilter'
 import {  AddIcon, Fab, Tooltip, makeStyles, 
     TextField, InputAdornment, CloseIcon, Grid,
-    SearchIcon, IconButton } from '../material-ui/material-ui'
-
+    SearchIcon, IconButton, } from '../material-ui/material-ui'
+import { filterBillDcp, filterBillClear } from '../../actions/billsFilter'
 export const useStyles = makeStyles((theme) => ({
     input: {
       width: '32rem'
     },
+
     root: {
         alignItems: 'center',
         display: 'flex',
@@ -38,6 +38,7 @@ const BillsActions = () => {
     const handleCleanFilter = () => {
         dispatch(filterBillClear())
     }
+  
     return (
         <Grid container className={classes.root}>
             <Grid className={classes.item} item xs='auto'>
@@ -59,7 +60,9 @@ const BillsActions = () => {
                         
                         }}
                 />
+                
             </Grid>
+           
             
              <Grid item xs='auto'>
                 <Tooltip  title='add' onClick={() => history.push('/add-bill')} 

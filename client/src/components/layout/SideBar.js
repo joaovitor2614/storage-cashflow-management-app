@@ -3,7 +3,9 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import {Sidebar, InputItem, DropdownItem, Icon, Item, Logo, LogoText} from 'react-sidebar-ui'
 import { StorageIcon, BusinessCenterIcon, 
-    AssessmentIcon, ExitToAppIcon, PeopleIcon, PersonAddIcon, DashboardIcon, ReceiptIcon, PostAddIcon} from '../material-ui/material-ui'
+    AssessmentIcon, ExitToAppIcon, PeopleIcon, 
+    PersonAddIcon, DashboardIcon, ReceiptIcon, 
+    PostAddIcon, TimelineIcon} from '../material-ui/material-ui'
    
 const SideBar = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -37,6 +39,12 @@ const SideBar = () => {
              Adicionar conta
         </Item>
     )
+    const historyBill = (
+        <Item classes='side-bar__item-2' onClick={() => handleLinks('bills-history')} bgColor='black'>
+             <TimelineIcon />
+             Histórico
+        </Item>
+    )
     return (
         <div>
             <Sidebar classes='side-bar' bgColor='black' isCollapsed={!isOpen}>
@@ -55,7 +63,7 @@ const SideBar = () => {
                         Movimentação de caixa
                     </Item>
                     <DropdownItem 
-                    values={[dashboardBill, addBill]}
+                    values={[dashboardBill, addBill, historyBill]}
                     bgColor={'black'}>
                          <div className='side-bar__menu'>
                             <ReceiptIcon />

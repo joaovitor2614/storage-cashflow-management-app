@@ -27,12 +27,12 @@ export const getBillById = (id) => async dispatch => {
 // pegar todos os clients
 export const getBills = () => async dispatch => {
     try {
-      
+        dispatch({ type: 'LOADING_BILL'})
         const res = await api.get('/receipt');
       
         dispatch({
             type: 'GET_BILLS',
-            payload: { bills: res.data }
+            payload: { paid: res.data.paid, notPaid: res.data.notPaid }
         })
     } catch (err) {
         console.log(err.message)
@@ -72,12 +72,20 @@ export const addBill = (data) => async dispatch => {
 }
 
 // remover bill
-export const removeBill = (id) => async dispatch => {
+export const removeBill = (id, isPaid) => async dispatch => {
     try {
-        dispatch({
-            type: 'REMOVE_BILL',
-            payload: { id }
-        })
+        if (isPaid === false) {
+            dispatch({
+                type: 'REMOVE_BILL',
+                payload: { id }
+            })
+        } else if (isPaid === true) {
+            dispatch({
+                type: 'REMOVE_BILL_HISTORY',
+                payload: { id }
+            })
+        }
+        
          await api.delete(`/receipt/${id}`);
  
       
@@ -94,11 +102,45 @@ export const removeBill = (id) => async dispatch => {
 export const editBill = (id, data) => async dispatch => {
     try {
          const res = await api.put(`/receipt/${id}`, data);
- 
+        if (data.isPaid === false) {
+            dispatch({
+                type: 'EDIT_BILL',
+                payload: { id, bill: res.data }
+            })
+        } else if (data.isPaid === true) {
+            dispatch({
+                type: 'EDIT_BILL_HISTORY',
+                payload: { id, bill: res.data }
+            })
+        }
+       
+    } catch (err) {
+        console.log(err.message)
         dispatch({
-            type: 'EDIT_BILL',
-            payload: { id, bill: res.data }
+            type: 'BILL_ERROR'
         })
+        
+    }
+}
+
+// colocar conta como pagar
+export const payBill = (id, bill) => async dispatch => {
+    try {
+         await api.put(`/receipt/paid/${id}`);
+         bill.isPaid = true
+        dispatch({
+            type: 'PAY_BILL',
+            payload: { id, bill }
+        })
+        toast.dark('✔️ Conta registrada como paga e salva em histórico', {
+            position: "top-center",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            })
     } catch (err) {
         console.log(err.message)
         dispatch({

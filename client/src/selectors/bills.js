@@ -1,7 +1,7 @@
 
 
   // função para filtrar items dinamicamente
-  export default (bills, { byDescription }) => {
+ const selectBills = (bills, { byDescription, byPaid }) => {
     return bills.filter((bill) => {
       const textMatch = bill.description.toLowerCase().includes(byDescription.toLowerCase());
    
@@ -10,3 +10,4 @@
     })
 }
 
+export default selectBills;

@@ -56,12 +56,12 @@ export const useStorageForm =  makeStyles(() => ({
         alignItems: 'center',
         display: 'flex',
         flexDirection: 'row',
-        margin: '23px 0',
-        padding: '4px',
+        margin: '13px 0',
+        padding: '2px',
         verticalAlign: 'middle',
         
         "& > *": {
-            margin: '0 16px'
+            margin: '0 7px'
             }
      
         },

@@ -1,5 +1,5 @@
 const express = require('express');
-
+const dayjs = require('dayjs')
 const auth = require('../../middlewares/auth')
 const { check, validationResult } = require('express-validator');
 const Receipt = require('../../models/Receipt');
@@ -30,7 +30,15 @@ router.get('/', auth, async (req, res) => {
          if (!receipts) {
             res.json({ msg: 'Nota a pagar não foram encontradas'});
          }
-         res.json(receipts)
+         const paid = [], notPaid = [];
+         receipts.forEach((rc) => {
+             if (rc.isPaid === false) {
+                 notPaid.unshift(rc)
+             } else if (rc.isPaid === true) {
+                 paid.unshift(rc)
+             }
+         })
+         res.json({ paid, notPaid})
     } catch (err) {
         console.log(err.message)
         res.status(500).send('Server error')
@@ -85,6 +93,27 @@ router.put('/:receipt_id', auth, async (req, res) => {
          if (!receipt) {
             res.json({ msg: 'Nota a paga não encontrada'});
          }
+         res.json(receipt)
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).send('Server error')
+    }
+})
+
+//@method PUT /api/receipt/paid/:client_id
+//desc Adicionar conta como paga
+router.put('/paid/:receipt_id', auth, async (req, res) => {
+    let { receipt_id } = req.params
+    try {
+
+         const receipt = await Receipt.findOne({ _id: receipt_id });
+         
+         if (!receipt) {
+            res.json({ msg: 'Nota a paga não encontrada'});
+         }
+         receipt.isPaid = true
+         receipt.paidAt = dayjs();
+         await receipt.save();
          res.json(receipt)
     } catch (err) {
         console.log(err.message)

@@ -14,8 +14,8 @@ import { getKgPrice, getUnitPrice } from '../cashflow/cash'
 
 
 
-const StorageAddForm = ({ handleSubmit, handleClose, data = '' }) => {
- 
+const StorageAddForm = ({ handleSubmit, handleClose, data = '', handleRemove }) => {
+   
     const classes = useStorageForm();
     const initialValues = {
         name: data ? data.name : '',
@@ -25,12 +25,13 @@ const StorageAddForm = ({ handleSubmit, handleClose, data = '' }) => {
         pricePerUnit: data ? parseFloat(data.vU.replace("R$", "")) : '',
         storageAmount: data ? data.qE : '',
         profitUnit: data ? parseFloat(data.profitUnit.replace("%", "")) : '',
-        profitKg: data ? parseFloat(data.profitKg.replace("%", "")) : ''
+        profitKg: data.profitKg ? parseFloat(data.profitKg.replace("%", "")) : ''
     }
+   
     // alterar para mostrar ou não input do lucro por kg
     const handleSwitch = () => setIsKg(!isKg);
     const unitPrice = (values) => {
-        console.log('price unit add', values)
+       
         // colocando peso do formulário como peso original dinamicamente
          values.originalWeight = values.weight
          return getUnitPrice(values);
@@ -81,9 +82,18 @@ const StorageAddForm = ({ handleSubmit, handleClose, data = '' }) => {
                             id="input-lu" label="Lucro por unidade(%)"  />
                             <MyTextField name="profitKg"  placeholder="Insira lucro por kg" 
                             id="input-lkg" type='number' label="Lucro por KG(%)" />
+                         
+                            <Button disabled={!(isValid && dirty)  || isSubmitting} 
+                            variant="contained" type="submit" color="primary">
+                                   Atualizar estoque
+                            </Button>
+                            {data !== '' ? <button className='button button--remove button--mt' 
+                            onClick={() => handleRemove(data.id)}>Excluir item</button> : ''}
+                          
+                           
     
                         </div>
-                       
+                      
 
                         
                        
@@ -95,10 +105,7 @@ const StorageAddForm = ({ handleSubmit, handleClose, data = '' }) => {
                         
 
                         <div className={classes.actions}>
-                            <Button disabled={!(isValid && dirty)  || isSubmitting} 
-                            variant="contained" type="submit" color="primary">
-                                Atualizar estoque
-                            </Button>
+                           
                             <div className={classes.prices}>
                                 <h4>Preço Venda Quilo: {numeral(kgPrice(values)).format('$0,0.00')}
                                 </h4>

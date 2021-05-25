@@ -19,6 +19,16 @@
   .button--primary:hover {
     background: #4178c0;
   }
+
+  .button--third {
+    background: #3abe57;
+    color: #ffffff;
+    transition: 0.4s ease-out;
+  }
+
+  .button--third:hover {
+    background: #2c9c45;
+  }
   
   .button--secondary {
     border: 1px solid #dadce0;
@@ -52,7 +62,12 @@
     transition: 0.4s ease-out;
   }
 
-  
+  .button--mtb-l {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem
+  }
+
+
  
 
   .button--mt {
