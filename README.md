@@ -5,7 +5,16 @@ This was a storage, sales, cash management app built specifically for a petshop 
 project you can register new products on the storage, make real time sales with immediate updates 
 on the storage and see your history and total cash earned on daily and monthly sales.
 
--⚙️💻 on development process yet
+![1621889033559](https://github.com/joaovitor2614/storage-cashflow-management-app/assets/72946113/e5f8824d-8606-4053-b071-4541d62fb8f2)
+![1621889033546](https://github.com/joaovitor2614/storage-cashflow-management-app/assets/72946113/7e12a73b-1ae3-407e-b280-d51a2fc07912)
+![1621889033452](https://github.com/joaovitor2614/storage-cashflow-management-app/assets/72946113/3c6aa908-dffc-43a7-ba2c-a1a7ab521134)
+![1621889032828](https://github.com/joaovitor2614/storage-cashflow-management-app/assets/72946113/43497490-a776-4b9c-bb2e-83ddf75b5de6)
+![1621889032828 (1)](https://github.com/joaovitor2614/storage-cashflow-management-app/assets/72946113/e55fe9cb-6b70-4df2-9be3-a77eb8385bf7)
+![1621889033722](https://github.com/joaovitor2614/storage-cashflow-management-app/assets/72946113/22907902-8561-435c-88a3-a50b26de303a)
+
+
+
+
 ## Table of contents
 * [Technologies](#technologies)
 * [Features](#features)
